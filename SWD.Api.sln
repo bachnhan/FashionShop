@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWD.Api", "SWD.Api\SWD.Api.csproj", "{E918F08A-DBA7-4665-8396-9F4C26949FFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWDService", "SWDService\SWDService.csproj", "{DE87DEC4-2E74-4C39-B8B3-58B32997FE7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E918F08A-DBA7-4665-8396-9F4C26949FFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E918F08A-DBA7-4665-8396-9F4C26949FFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E918F08A-DBA7-4665-8396-9F4C26949FFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E918F08A-DBA7-4665-8396-9F4C26949FFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE87DEC4-2E74-4C39-B8B3-58B32997FE7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE87DEC4-2E74-4C39-B8B3-58B32997FE7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE87DEC4-2E74-4C39-B8B3-58B32997FE7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE87DEC4-2E74-4C39-B8B3-58B32997FE7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C85380F1-E2AD-4509-B81F-B7C931FA56FE}
+	EndGlobalSection
+EndGlobal
