@@ -1,4 +1,3 @@
-C:\Users\Nhan\Documents\FashionShop\SWDService\obj\Debug\SWDService.csproj.CoreCompileInputs.cache
 C:\Users\Nhan\Documents\FashionShop\SWDService\bin\Debug\SWDService.dll.config
 C:\Users\Nhan\Documents\FashionShop\SWDService\bin\Debug\SWDService.dll
 C:\Users\Nhan\Documents\FashionShop\SWDService\bin\Debug\SWDService.pdb
@@ -81,5 +80,6 @@ C:\Users\Nhan\Documents\FashionShop\SWDService\bin\Debug\ko\System.Spatial.resou
 C:\Users\Nhan\Documents\FashionShop\SWDService\bin\Debug\ru\System.Spatial.resources.dll
 C:\Users\Nhan\Documents\FashionShop\SWDService\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\Users\Nhan\Documents\FashionShop\SWDService\bin\Debug\zh-Hant\System.Spatial.resources.dll
+C:\Users\Nhan\Documents\FashionShop\SWDService\obj\Debug\SWDService.csproj.CoreCompileInputs.cache
 C:\Users\Nhan\Documents\FashionShop\SWDService\obj\Debug\SWDService.dll
 C:\Users\Nhan\Documents\FashionShop\SWDService\obj\Debug\SWDService.pdb
