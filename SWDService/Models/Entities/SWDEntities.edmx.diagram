@@ -8,20 +8,20 @@
         <EntityTypeShape EntityType="HmsEntities.GroupMembershipCard" Width="1.5" PointX="3" PointY="108.375" />
         <AssociationConnector Association="HmsEntities.FK_GroupMembershipCard_Brand" />
         <AssociationConnector Association="HmsEntities.FK_MembershipCard_GroupMembershipCard" />
-        <EntityTypeShape EntityType="HmsEntities.Account" Width="1.5" PointX="5.25" PointY="14.625" />
-        <EntityTypeShape EntityType="HmsEntities.Customer" Width="1.5" PointX="6" PointY="18.375" />
-        <EntityTypeShape EntityType="HmsEntities.Employee" Width="1.5" PointX="3" PointY="14.25" />
-        <EntityTypeShape EntityType="HmsEntities.InventoryChecking" Width="1.5" PointX="3" PointY="11.125" />
-        <EntityTypeShape EntityType="HmsEntities.InventoryCheckingDetail" Width="1.5" PointX="5.25" PointY="11.125" />
-        <EntityTypeShape EntityType="HmsEntities.OrderDetail" Width="1.5" PointX="10.5" PointY="12" />
-        <EntityTypeShape EntityType="HmsEntities.Order" Width="1.5" PointX="8.25" PointY="11.375" />
-        <EntityTypeShape EntityType="HmsEntities.Payment" Width="1.5" PointX="6" PointY="3.625" />
+        <EntityTypeShape EntityType="HmsEntities.Account" Width="1.5" PointX="8.25" PointY="14.875" />
+        <EntityTypeShape EntityType="HmsEntities.Customer" Width="1.5" PointX="6" PointY="21.625" />
+        <EntityTypeShape EntityType="HmsEntities.Employee" Width="1.5" PointX="3" PointY="14.5" />
+        <EntityTypeShape EntityType="HmsEntities.InventoryChecking" Width="1.5" PointX="3" PointY="11.375" />
+        <EntityTypeShape EntityType="HmsEntities.InventoryCheckingDetail" Width="1.5" PointX="5.25" PointY="11.25" />
+        <EntityTypeShape EntityType="HmsEntities.OrderDetail" Width="1.5" PointX="7.5" PointY="18.25" />
+        <EntityTypeShape EntityType="HmsEntities.Order" Width="1.5" PointX="5.25" PointY="14.625" />
+        <EntityTypeShape EntityType="HmsEntities.Payment" Width="1.5" PointX="3" PointY="18.25" />
         <EntityTypeShape EntityType="HmsEntities.Product" Width="1.5" PointX="3" PointY="0.75" />
         <EntityTypeShape EntityType="HmsEntities.ProductCategory" Width="1.5" PointX="0.75" PointY="1.875" />
-        <EntityTypeShape EntityType="HmsEntities.Store" Width="1.5" PointX="0.75" PointY="9" />
-        <EntityTypeShape EntityType="HmsEntities.Supplier" Width="1.5" PointX="0.75" PointY="5" />
-        <EntityTypeShape EntityType="HmsEntities.TransportOrder" Width="1.5" PointX="3" PointY="6.75" />
-        <EntityTypeShape EntityType="HmsEntities.TransportOrderDetail" Width="1.5" PointX="5.25" PointY="7.125" />
+        <EntityTypeShape EntityType="HmsEntities.Store" Width="1.5" PointX="0.75" PointY="9.125" />
+        <EntityTypeShape EntityType="HmsEntities.Supplier" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="HmsEntities.TransportOrder" Width="1.5" PointX="3" PointY="7" />
+        <EntityTypeShape EntityType="HmsEntities.TransportOrderDetail" Width="1.5" PointX="5.25" PointY="7.375" />
         <AssociationConnector Association="HmsEntities.FK_Account_Customer" />
         <AssociationConnector Association="HmsEntities.FK_Account_Employee" />
         <AssociationConnector Association="HmsEntities.FK_Orders_Customer" />
