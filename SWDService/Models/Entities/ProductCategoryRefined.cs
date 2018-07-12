@@ -12,7 +12,7 @@ namespace HmsService.Models.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductCategory : SkyWeb.DatVM.Data.IEntity, SkyWeb.DatVM.Data.IActivable
+    public partial class ProductCategory : SkyWeb.DatVM.Data.IEntity
     {
     }
 }

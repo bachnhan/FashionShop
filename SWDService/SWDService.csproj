@@ -139,158 +139,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiEndpoint.cs" />
     <Compile Include="App_Code\WebPageRouteHandler.cs" />
-    <Compile Include="Filter\StoreFilter.cs" />
     <Compile Include="Models\Entities\Account.cs">
       <DependentUpon>SWDEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\AccountRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\AdsRegisterRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ApplicationRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\AreaDeliveryRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ArticleRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\AspNetRoleRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\AspNetUserClaimRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\AspNetUserLoginRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\AspNetUserRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\AttendanceDateRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\AttendanceRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\BlogCategoryRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\BlogPostCollectionItemMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\BlogPostCollectionItemRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\BlogPostCollectionRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\BlogPostImageRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\BlogPostRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\BrandRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\CategoryExtraMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\CategoryExtraRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\CheckFingerRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ContactRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\CostCategoryRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\CostInventoryMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\CostRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\CouponCampaignRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\CouponProviderRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\CouponRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\Customer.cs">
       <DependentUpon>SWDEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\CustomerFeedbackRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\CustomerFilterRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\CustomerProductMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\CustomerRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\CustomerStoreReportMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\CustomerTypeRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\C__MigrationHistory.cs">
-      <DependentUpon>SWDEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\C__MigrationHistoryRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\DateHotelReportRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\DateProductItemRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\DateProductRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\DateReportRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\DeliveryInfoRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\DeliveryInformationRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\DistrictRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\Employee.cs">
       <DependentUpon>SWDEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\EmployeeFinger.cs">
-      <DependentUpon>SWDEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\EmployeeFingerRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\EmployeeGroupRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\EmployeeInStoreRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\EmployeeRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
@@ -300,23 +163,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\EventLocationRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\FavoritedRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\FingerScanMachineRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\GroupRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\GuestRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\InventoryCheckingDetail.cs">
       <DependentUpon>SWDEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\InventoryCheckingDetailRefined.cs">
+      <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Repositories\InventoryCheckingDetailRepositoryGen.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
@@ -345,6 +196,9 @@
     <Compile Include="Models\Entities\Supplier.cs">
       <DependentUpon>SWDEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\SupplierRefined.cs">
+      <DependentUpon>EntityRefinery.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\SWDEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -360,55 +214,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SWDEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\ImageCollectionItemRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ImageCollectionRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\InventoryChecking.cs">
       <DependentUpon>SWDEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\InventoryCheckingItemRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\InventoryCheckingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\InventoryDateReportItemRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\InventoryDateReportRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\InventoryReceiptItemRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\InventoryReceiptRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\InventoryTemplateReportRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\LanguageKeyRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\LanguageRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\LanguageValueRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\MachineConnectRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\MembershipCardRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\MembershipCardTypeRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\MenuRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Order.cs">
@@ -417,19 +226,7 @@
     <Compile Include="Models\Entities\OrderDetail.cs">
       <DependentUpon>SWDEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\OrderDetailPromotionMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\OrderDetailRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\OrderFeeItemRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\OrderGroupRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\OrderPromotionMappingRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\OrderRefined.cs">
@@ -438,28 +235,7 @@
     <Compile Include="Models\Entities\Payment.cs">
       <DependentUpon>SWDEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\PaymentPartnerRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\PaymentRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\PaymentReportRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\PosConfigRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\PosFileRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\PriceAdditionRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\PriceGroupRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\PriceNightRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Product.cs">
@@ -471,85 +247,13 @@
     <Compile Include="Models\Entities\ProductCategoryRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\ProductCollectionItemMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProductCollectionRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProductComboDetailRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProductDetailMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProductImageCollectionItemMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProductImageCollectionRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProductImageRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProductItemCategoryRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProductItemCompositionMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProductItemRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\ProductRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProductSpecificationRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProfileRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\PromotionDetailRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\PromotionPartnerRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\PromotionRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\PromotionStoreMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProviderProductItemMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProviderRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ProvinceRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\RatingProductRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\RatingStarRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ReportTrackingRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Repositories\AccountRepositoryGen.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Repositories\CustomerRepositoryGen.cs">
-      <DependentUpon>Repositories.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\Repositories\C__MigrationHistoryRepositoryGen.cs">
-      <DependentUpon>Repositories.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\Repositories\EmployeeFingerRepositoryGen.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Repositories\EmployeeRepositoryGen.cs">
@@ -581,31 +285,10 @@
     <Compile Include="Models\Entities\Repositories\StoreRepositoryGen.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\RoleRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\RoomCategoryPriceGroupMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\RoomCategoryRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\RoomFloorRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\RoomRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\Services\AccountServiceGen.cs">
       <DependentUpon>Services.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Services\CustomerServiceGen.cs">
-      <DependentUpon>Services.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\Services\C__MigrationHistoryServiceGen.cs">
-      <DependentUpon>Services.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\Services\EmployeeFingerServiceGen.cs">
       <DependentUpon>Services.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Services\EmployeeServiceGen.cs">
@@ -646,61 +329,7 @@
     <Compile Include="Models\Entities\Store.cs">
       <DependentUpon>SWDEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\StoreDomainRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\StoreGroupMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\StoreGroupRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\StoreRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\StoreThemeRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\StoreUserRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\StoreWebRouteModelRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\StoreWebRouteRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\StoreWebSettingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\StoreWebViewCounterRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\SubRentGroupRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\SystemPartnerMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\TagMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\TagRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\TemplateReportProductItemMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ThemeRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\TimeFrameRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\TokenUserRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\TransactionRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\TransportOrder.cs">
@@ -709,68 +338,30 @@
     <Compile Include="Models\Entities\TransportOrderDetail.cs">
       <DependentUpon>SWDEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\UserRefined.cs">
+    <Compile Include="Models\Entities\TransportOrderDetailRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\VATOrderMappingRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\VATOrderRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\ViewCounterRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\VoucherRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\WardRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\WebCustomerFeedbackRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\WebElementRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\WebElementTypeRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\WebMenuCategoryRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\WebMenuRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\WebPageRefined.cs">
+    <Compile Include="Models\Entities\TransportOrderRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EntityExtensions.cs" />
     <Compile Include="Models\Enums.cs" />
-    <Compile Include="Models\ExportToExcelExtensions.cs" />
     <Compile Include="Models\Helpers.cs" />
     <Compile Include="Models\HmsDependencyResolver.cs" />
     <Compile Include="Models\IQueryableExtension.cs" />
     <Compile Include="Models\JQueryDataTableParamModel.cs" />
     <Compile Include="Models\NotifyMessage.cs" />
     <Compile Include="Models\OperationStatus.cs" />
-    <Compile Include="Models\StringConvert.cs" />
-    <Compile Include="Models\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sdk\AccountApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
     <Compile Include="Sdk\BaseSdkApi.cs" />
+    <Compile Include="Sdk\CustomerApi.cs" />
     <Compile Include="Sdk\CustomerApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
-    <Compile Include="Sdk\C__MigrationHistoryApiGen.cs">
-      <DependentUpon>Sdk.tt</DependentUpon>
-    </Compile>
     <Compile Include="Sdk\EmployeeApiGen.cs">
-      <DependentUpon>Sdk.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sdk\EmployeeFingerApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
     <Compile Include="Sdk\InventoryCheckingApiGen.cs">
@@ -806,16 +397,15 @@
     <Compile Include="Sdk\TransportOrderDetailApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sdk\Sdk.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sdk.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AccountViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CustomerViewModelGen.cs">
-      <DependentUpon>ViewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\C__MigrationHistoryViewModelGen.cs">
-      <DependentUpon>ViewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\EmployeeFingerViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\EmployeeViewModelGen.cs">
@@ -845,11 +435,6 @@
     <Compile Include="ViewModels\StoreViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Sdk\Sdk.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Sdk.tt</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\SupplierViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
@@ -860,9 +445,9 @@
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ViewModel.cs">
-      <DependentUpon>ViewModel.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

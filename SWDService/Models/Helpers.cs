@@ -37,7 +37,7 @@ namespace HmsService.Models
         public static string MES_PAYMENT_CASH = "Thanh toán bằng tiền mặt";
         public static string MES_PAYMENT_MOMO = "Thanh toán qua MomMo";
 
-        public const string PRIVATE_KEY = "WiskySRKey";
+        public const string PRIVATE_KEY = "SWDSecretKey";
         public static int MAX_RECORD = 25;
         public static string DELIVERY = "DELIVERY";
     }

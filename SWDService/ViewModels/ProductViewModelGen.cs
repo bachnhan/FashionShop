@@ -17,6 +17,8 @@ namespace HmsService.ViewModels
     	
     			public virtual int ID { get; set; }
     			public virtual string Name { get; set; }
+    			public virtual string Size { get; set; }
+    			public virtual string Color { get; set; }
     			public virtual string Description { get; set; }
     			public virtual int CategoryID { get; set; }
     			public virtual int SupplierId { get; set; }

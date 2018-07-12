@@ -25,6 +25,9 @@ namespace HmsService.Models.Entities
         public string Name { get; set; }
         public string Phone { get; set; }
         public string DeliveryAddress { get; set; }
+        public string fbEmail { get; set; }
+        public Nullable<bool> Gender { get; set; }
+        public Nullable<System.DateTime> Birthday { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account> Accounts { get; set; }

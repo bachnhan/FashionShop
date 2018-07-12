@@ -19,6 +19,9 @@ namespace HmsService.ViewModels
     			public virtual string Name { get; set; }
     			public virtual string Phone { get; set; }
     			public virtual string DeliveryAddress { get; set; }
+    			public virtual string fbEmail { get; set; }
+    			public virtual Nullable<bool> Gender { get; set; }
+    			public virtual Nullable<System.DateTime> Birthday { get; set; }
     	
     	public CustomerViewModel() : base() { }
     	public CustomerViewModel(HmsService.Models.Entities.Customer entity) : base(entity) { }

@@ -4,7 +4,7 @@
 <#@ import namespace="System.Linq" #>
  <#
 
-const string inputFile = @"HmsEntities.edmx";
+const string inputFile = @"SWDEntities.edmx";
 var textTransform = DynamicTextTransformation.Create(this);
 var code = new CodeGenerationTools(this);
 var ef = new MetadataTools(this);
