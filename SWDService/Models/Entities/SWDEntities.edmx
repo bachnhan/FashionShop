@@ -102,6 +102,8 @@
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="SupplierId" Type="int" Nullable="false" />
           <Property Name="PicUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="ParentProductId" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -731,6 +733,8 @@
           <NavigationProperty Name="ProductCategory" Relationship="HmsEntities.FK_Product_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
           <NavigationProperty Name="Supplier" Relationship="HmsEntities.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
           <NavigationProperty Name="TransportOrderDetails" Relationship="HmsEntities.FK_TransportOrderDetail_Product" FromRole="Product" ToRole="TransportOrderDetail" />
+          <Property Name="ParentProductId" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -1125,6 +1129,8 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="HmsEntities.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ParentProductId" ColumnName="ParentProductId" />
                 <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
                 <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />

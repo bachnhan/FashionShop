@@ -97,6 +97,8 @@
     <Property Name="CategoryID" Type="int" Nullable="false" />
     <Property Name="SupplierId" Type="int" Nullable="false" />
     <Property Name="PicUrl" Type="nvarchar" MaxLength="250" />
+    <Property Name="ParentProductId" Type="int" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductCategory">
     <Key>
