@@ -23,6 +23,8 @@ namespace HmsService.ViewModels
     			public virtual int CategoryID { get; set; }
     			public virtual int SupplierId { get; set; }
     			public virtual string PicUrl { get; set; }
+    			public virtual Nullable<int> ParentProductId { get; set; }
+    			public virtual decimal Price { get; set; }
     	
     	public ProductViewModel() : base() { }
     	public ProductViewModel(HmsService.Models.Entities.Product entity) : base(entity) { }
