@@ -1,8 +1,10 @@
 ﻿using Facebook;
 using HmsService.Models;
+using HmsService.Models.Entities;
 using HmsService.Sdk;
 using HmsService.ViewModels;
 using Jose;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -53,19 +55,25 @@ namespace SWD.Api.Controllers
             if (customer != null)
             {
                 //Check customer membershipcard
-                customerApi.Edit(customer.ID,customer);
+                customerApi.Edit(customer.ID, customer);
                 var newToken = GenerateToken(customer.ID.ToString());
                 return Json(new
                 {
-                    success = true,
-                    message = ConstantManager.MES_LOGIN_SUCCESS,
-                    status = ConstantManager.STATUS_SUCCESS,
+                    status = new
+                    {
+                        success = true,
+                        message = ConstantManager.MES_LOGIN_SUCCESS,
+                        status = ConstantManager.STATUS_SUCCESS
+                    },
                     data = new
                     {
-                        accessToken = newToken,
-                        isfirstLogin = false,
-                        isPhoneNoLogin = false,
-                        CustomerInfo = customer
+                        data = new
+                        {
+                            accessToken = newToken,
+                            isfirstLogin = false,
+                            isPhoneNoLogin = false,
+                            CustomerInfo = customer
+                        }
                     },
                 }, JsonRequestBehavior.AllowGet);
             }
@@ -85,33 +93,176 @@ namespace SWD.Api.Controllers
                     var newToken = GenerateToken(createdCustomer.ID.ToString());
                     return Json(new
                     {
-                        success = true,
-                        message = ConstantManager.MES_LOGIN_SUCCESS,
-                        status = ConstantManager.STATUS_SUCCESS,
+                        status = new
+                        {
+                            success = true,
+                            message = ConstantManager.MES_LOGIN_SUCCESS,
+                            status = ConstantManager.STATUS_SUCCESS
+                        },
                         data = new
                         {
-                            accessToken = newToken,
-                            isfirstLogin = true,
-                            isPhoneNoLogin = false,
-                            CustomerInfo = customer
+                            data = new
+                            {
+                                accessToken = newToken,
+                                isfirstLogin = true,
+                                isPhoneNoLogin = false,
+                                CustomerInfo = customer
+                            }
                         },
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
             return Json(new
             {
-                success = false,
-                message = ConstantManager.MES_LOGIN_FAIL,
-                status = ConstantManager.STATUS_SUCCESS,
+                status = new
+                {
+                    success = false,
+                    message = ConstantManager.MES_LOGIN_FAIL,
+                    status = ConstantManager.STATUS_SUCCESS
+                },
+                data = new { }
             }, JsonRequestBehavior.AllowGet);
         }
 
-        public static string GenerateToken(string customerID)
+        private static string GenerateToken(string customerID)
         {
             var payload = customerID + ":" + DateTime.Now.Ticks.ToString();
 
             return JWT.Encode(payload, secretKey, JwsAlgorithm.HS256);
         }
 
+        private string getCustomerIdFromToken(string token)
+        {
+            string key = JWT.Decode(token, secretKey);
+            string[] parts = key.Split(new char[] { ':' });
+            return parts[0];
+        }
+
+        public JsonResult GetStoreInfo(int storeId)
+        {
+            var storeApi = new StoreApi();
+            var store = storeApi.Get().Where(q => q.ID == storeId).FirstOrDefault();
+            if (store != null)
+            {
+                return Json(new
+                {
+                    status = new
+                    {
+                        success = true,
+                        status = ConstantManager.STATUS_SUCCESS,
+                        message = ConstantManager.MES_SUCCESS
+                    },
+                    data = new
+                    {
+                        data = new
+                        {
+                            Name = store.Name,
+                            Address = store.Address
+                        }
+                    }
+                }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = new
+                    {
+                        success = false,
+                        status = ConstantManager.STATUS_SUCCESS,
+                        message = ConstantManager.MES_FAIL
+                    },
+                    data = new
+                    {
+                    }
+                });
+            }
+        }
+
+        public JsonResult getListProduct(int brandId)
+        {
+            ProductApi productApi = new ProductApi();
+            ProductCategoryApi productCategoryApi = new ProductCategoryApi();
+
+            //get parent product
+            var products = productApi.Get().Where(q => q.ParentProductId != null);
+
+            if (products == null)
+            {
+                return Json(new
+                {
+                    status = new
+                    {
+                        success = false,
+                        status = ConstantManager.STATUS_SUCCESS,
+                        message = ConstantManager.MES_FAIL
+                    },
+                    data = new { }
+                }, JsonRequestBehavior.AllowGet);
+            }
+            try
+            {
+                List<ProductViewModel> childProduct = new List<ProductViewModel>();
+                Dictionary<ProductViewModel, List<ProductViewModel>> productFamilies = new Dictionary<ProductViewModel, List<ProductViewModel>>(); 
+                foreach (var item in products)
+                {
+                    childProduct = productApi.Get().Where(p => p.ParentProductId == item.ID).ToList();
+                    productFamilies.Add(item,childProduct);
+                }
+                var data = (from r in productFamilies
+                            select new
+                            {
+                                product_id = r.Key.ID,
+                                product_name = r.Key.Name,
+                                price = r.Key.Price,
+                                cat_id = r.Key.CategoryID,
+                                child_list = r.Value
+                            }).ToList();
+                //get product category
+                var productCategory = productCategoryApi.Get();
+                //get cateId and cateName
+                var category = from pc in productCategory
+                               select new
+                               {
+                                   cat_id = pc.ID,
+                                   cat_name = pc.Name
+                               };
+
+                return Json(new
+                {
+                    status = new
+                    {
+                        success = true,
+                        status = ConstantManager.STATUS_SUCCESS,
+                        message = ConstantManager.MES_SUCCESS,
+                    },
+                    data = new
+                    {
+                        data = new
+                        {
+                            product_list = data,
+                            product_category_list = category.ToList()
+                        }
+                    }
+
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+
+                return Json(new
+                {
+                    status = new
+                    {
+                        success = false,
+                        status = ConstantManager.STATUS_SUCCESS,
+                        message = ConstantManager.MES_FAIL
+                    },
+                    data = new { }
+
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
     }
 }

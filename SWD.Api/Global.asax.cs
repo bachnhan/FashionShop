@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AutoMapper;
 
 namespace SWD.Api
 {
@@ -18,6 +19,11 @@ namespace SWD.Api
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            HmsService.ApiEndpoint.Entry(this.AdditionalMapperConfig);
+        }
+
+        public void AdditionalMapperConfig(IMapperConfiguration config)
+        {
         }
     }
 }
