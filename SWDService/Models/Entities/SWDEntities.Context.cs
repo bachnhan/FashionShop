@@ -15,10 +15,10 @@ namespace HmsService.Models.Entities
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Entities : DbContext
+    public partial class SWDEntities : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public SWDEntities()
+            : base("name=SWDEntities")
         {
         }
     
@@ -28,19 +28,19 @@ namespace HmsService.Models.Entities
         }
     
         public virtual DbSet<Account> Accounts { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<InventoryChecking> InventoryCheckings { get; set; }
         public virtual DbSet<InventoryCheckingDetail> InventoryCheckingDetails { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<TransportOrder> TransportOrders { get; set; }
         public virtual DbSet<TransportOrderDetail> TransportOrderDetails { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

@@ -83,3 +83,4 @@ C:\Users\Nhan\Documents\FashionShop\SWDService\bin\Debug\zh-Hant\System.Spatial.
 C:\Users\Nhan\Documents\FashionShop\SWDService\obj\Debug\SWDService.csproj.CoreCompileInputs.cache
 C:\Users\Nhan\Documents\FashionShop\SWDService\obj\Debug\SWDService.dll
 C:\Users\Nhan\Documents\FashionShop\SWDService\obj\Debug\SWDService.pdb
+C:\Users\Nhan\Documents\FashionShop\SWDService\obj\Debug\SWDService.csprojResolveAssemblyReference.cache
