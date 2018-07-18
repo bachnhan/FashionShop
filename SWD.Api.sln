@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWD.Api", "SWD.Api\SWD.Api.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWDService", "SWDService\SWDService.csproj", "{DE87DEC4-2E74-4C39-B8B3-58B32997FE7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin", "Admin\Admin.csproj", "{6C9853E4-C3D3-4AA6-875E-3F5F45857D79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DE87DEC4-2E74-4C39-B8B3-58B32997FE7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE87DEC4-2E74-4C39-B8B3-58B32997FE7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE87DEC4-2E74-4C39-B8B3-58B32997FE7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C9853E4-C3D3-4AA6-875E-3F5F45857D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C9853E4-C3D3-4AA6-875E-3F5F45857D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C9853E4-C3D3-4AA6-875E-3F5F45857D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C9853E4-C3D3-4AA6-875E-3F5F45857D79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
