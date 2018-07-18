@@ -80,7 +80,6 @@
     <EntitySet Name="Accounts" EntityType="HmsEntities.Account" />
     <EntitySet Name="Customers" EntityType="HmsEntities.Customer" />
     <EntitySet Name="Employees" EntityType="HmsEntities.Employee" />
-    <EntitySet Name="Products" EntityType="HmsEntities.Product" />
     <AssociationSet Name="FK_Account_Customer" Association="HmsEntities.FK_Account_Customer">
       <End Role="Customer" EntitySet="Customers" />
       <End Role="Account" EntitySet="Accounts" />
@@ -101,6 +100,8 @@
       <End Role="Employee" EntitySet="Employees" />
       <End Role="Order" EntitySet="Orders" />
     </AssociationSet>
+    <EntitySet Name="ProductImages" EntityType="HmsEntities.ProductImage" />
+    <EntitySet Name="Products" EntityType="HmsEntities.Product" />
     <AssociationSet Name="FK_InventoryCheckingDetail_Product" Association="HmsEntities.FK_InventoryCheckingDetail_Product">
       <End Role="Product" EntitySet="Products" />
       <End Role="InventoryCheckingDetail" EntitySet="InventoryCheckingDetails" />
@@ -116,6 +117,10 @@
     <AssociationSet Name="FK_Product_Supplier" Association="HmsEntities.FK_Product_Supplier">
       <End Role="Supplier" EntitySet="Suppliers" />
       <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductImage_Product" Association="HmsEntities.FK_ProductImage_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductImage" EntitySet="ProductImages" />
     </AssociationSet>
     <AssociationSet Name="FK_TransportOrderDetail_Product" Association="HmsEntities.FK_TransportOrderDetail_Product">
       <End Role="Product" EntitySet="Products" />
@@ -411,26 +416,6 @@
     <NavigationProperty Name="Store" Relationship="HmsEntities.FK_Employee_Store" FromRole="Employee" ToRole="Store" />
     <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Employee" FromRole="Employee" ToRole="Order" />
   </EntityType>
-  <EntityType Name="Product">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="Size" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="Color" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="CategoryID" Type="Int32" Nullable="false" />
-    <Property Name="SupplierId" Type="Int32" Nullable="false" />
-    <Property Name="PicUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="ParentProductId" Type="Int32" />
-    <NavigationProperty Name="InventoryCheckingDetails" Relationship="HmsEntities.FK_InventoryCheckingDetail_Product" FromRole="Product" ToRole="InventoryCheckingDetail" />
-    <NavigationProperty Name="OrderDetails" Relationship="HmsEntities.FK_OrderDetail_Product" FromRole="Product" ToRole="OrderDetail" />
-    <NavigationProperty Name="ProductCategory" Relationship="HmsEntities.FK_Product_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
-    <NavigationProperty Name="Supplier" Relationship="HmsEntities.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
-    <NavigationProperty Name="TransportOrderDetails" Relationship="HmsEntities.FK_TransportOrderDetail_Product" FromRole="Product" ToRole="TransportOrderDetail" />
-  </EntityType>
   <Association Name="FK_Account_Customer">
     <End Type="HmsEntities.Customer" Role="Customer" Multiplicity="0..1" />
     <End Type="HmsEntities.Account" Role="Account" Multiplicity="*" />
@@ -491,6 +476,36 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="ProductImage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="PicUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="HmsEntities.FK_ProductImage_Product" FromRole="ProductImage" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Size" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Color" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="SupplierId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ParentProductId" Type="Int32" />
+    <NavigationProperty Name="InventoryCheckingDetails" Relationship="HmsEntities.FK_InventoryCheckingDetail_Product" FromRole="Product" ToRole="InventoryCheckingDetail" />
+    <NavigationProperty Name="OrderDetails" Relationship="HmsEntities.FK_OrderDetail_Product" FromRole="Product" ToRole="OrderDetail" />
+    <NavigationProperty Name="ProductCategory" Relationship="HmsEntities.FK_Product_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
+    <NavigationProperty Name="Supplier" Relationship="HmsEntities.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
+    <NavigationProperty Name="ProductImages" Relationship="HmsEntities.FK_ProductImage_Product" FromRole="Product" ToRole="ProductImage" />
+    <NavigationProperty Name="TransportOrderDetails" Relationship="HmsEntities.FK_TransportOrderDetail_Product" FromRole="Product" ToRole="TransportOrderDetail" />
+  </EntityType>
   <Association Name="FK_InventoryCheckingDetail_Product">
     <End Type="HmsEntities.Product" Role="Product" Multiplicity="1" />
     <End Type="HmsEntities.InventoryCheckingDetail" Role="InventoryCheckingDetail" Multiplicity="*" />
@@ -536,6 +551,18 @@
       </Principal>
       <Dependent Role="Product">
         <PropertyRef Name="SupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductImage_Product">
+    <End Type="HmsEntities.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="HmsEntities.ProductImage" Role="ProductImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductImage">
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

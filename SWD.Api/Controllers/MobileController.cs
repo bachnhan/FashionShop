@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -156,8 +157,7 @@ namespace SWD.Api.Controllers
                     {
                         data = new
                         {
-                            Name = store.Name,
-                            Address = store.Address
+                            store = store
                         }
                     }
                 }, JsonRequestBehavior.AllowGet);
@@ -179,13 +179,54 @@ namespace SWD.Api.Controllers
             }
         }
 
-        public JsonResult getListProduct(int brandId)
+        public JsonResult GetStoreList()
+        {
+            var storeApi = new StoreApi();
+            var stores = storeApi.Get().ToList();
+            if (stores != null)
+            {
+                return Json(new
+                {
+                    status = new
+                    {
+                        success = true,
+                        status = ConstantManager.STATUS_SUCCESS,
+                        message = ConstantManager.MES_SUCCESS
+                    },
+                    data = new
+                    {
+                        data = new
+                        {
+                            store_list = stores
+                        }
+                    }
+                }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = new
+                    {
+                        success = false,
+                        status = ConstantManager.STATUS_SUCCESS,
+                        message = ConstantManager.MES_FAIL
+                    },
+                    data = new
+                    {
+                    }
+                });
+            }
+        }
+
+        public JsonResult getListProduct()
         {
             ProductApi productApi = new ProductApi();
             ProductCategoryApi productCategoryApi = new ProductCategoryApi();
+            ProductImageApi productImageApi = new ProductImageApi();
 
             //get parent product
-            var products = productApi.Get().Where(q => q.ParentProductId != null);
+            var products = productApi.Get().Where(q => q.ParentProductId == null);
 
             if (products == null)
             {
@@ -200,69 +241,45 @@ namespace SWD.Api.Controllers
                     data = new { }
                 }, JsonRequestBehavior.AllowGet);
             }
-            try
-            {
-                List<ProductViewModel> childProduct = new List<ProductViewModel>();
-                Dictionary<ProductViewModel, List<ProductViewModel>> productFamilies = new Dictionary<ProductViewModel, List<ProductViewModel>>(); 
-                foreach (var item in products)
-                {
-                    childProduct = productApi.Get().Where(p => p.ParentProductId == item.ID).ToList();
-                    productFamilies.Add(item,childProduct);
-                }
-                var data = (from r in productFamilies
-                            select new
-                            {
-                                product_id = r.Key.ID,
-                                product_name = r.Key.Name,
-                                price = r.Key.Price,
-                                cat_id = r.Key.CategoryID,
-                                child_list = r.Value
-                            }).ToList();
-                //get product category
-                var productCategory = productCategoryApi.Get();
-                //get cateId and cateName
-                var category = from pc in productCategory
-                               select new
-                               {
-                                   cat_id = pc.ID,
-                                   cat_name = pc.Name
-                               };
 
-                return Json(new
+            var data = (from p in products
+                        select new
+                        {
+                            product_image_list = productImageApi.Get().Where(q => q.ProductId == p.ID).ToList(),
+                            product_id = p.ID,
+                            product_name = p.Name,
+                            price = p.Price,
+                            cat_id = p.CategoryID
+                        }).ToList();
+
+            //get product category
+            var productCategory = productCategoryApi.Get();
+            //get cateId and cateName
+            var category = from pc in productCategory
+                           select new
+                           {
+                               cat_id = pc.ID,
+                               cat_name = pc.Name
+                           };
+
+            return Json(new
+            {
+                status = new
                 {
-                    status = new
-                    {
-                        success = true,
-                        status = ConstantManager.STATUS_SUCCESS,
-                        message = ConstantManager.MES_SUCCESS,
-                    },
+                    success = true,
+                    status = ConstantManager.STATUS_SUCCESS,
+                    message = ConstantManager.MES_SUCCESS,
+                },
+                data = new
+                {
                     data = new
                     {
-                        data = new
-                        {
-                            product_list = data,
-                            product_category_list = category.ToList()
-                        }
+                        product_list = data,
+                        product_category_list = category.ToList()
                     }
+                }
 
-                }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-
-                return Json(new
-                {
-                    status = new
-                    {
-                        success = false,
-                        status = ConstantManager.STATUS_SUCCESS,
-                        message = ConstantManager.MES_FAIL
-                    },
-                    data = new { }
-
-                }, JsonRequestBehavior.AllowGet);
-            }
-
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

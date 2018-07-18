@@ -96,7 +96,6 @@
     <Property Name="Description" Type="nvarchar" MaxLength="250" />
     <Property Name="CategoryID" Type="int" Nullable="false" />
     <Property Name="SupplierId" Type="int" Nullable="false" />
-    <Property Name="PicUrl" Type="nvarchar" MaxLength="250" />
     <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="ParentProductId" Type="int" />
   </EntityType>
@@ -106,6 +105,15 @@
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductImage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" />
+    <Property Name="PicUrl" Type="nvarchar" MaxLength="250" />
+    <Property Name="DisplayOrder" Type="int" />
   </EntityType>
   <EntityType Name="Store">
     <Key>
@@ -320,6 +328,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ProductImage_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="ProductImage" Type="Self.ProductImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductImage">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TransportOrder_Store">
     <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
     <End Role="TransportOrder" Type="Self.TransportOrder" Multiplicity="*" />
@@ -391,6 +411,7 @@
     <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductImage" EntityType="Self.ProductImage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransportOrder" EntityType="Self.TransportOrder" Schema="dbo" store:Type="Tables" />
@@ -450,6 +471,10 @@
     <AssociationSet Name="FK_Product_Supplier" Association="Self.FK_Product_Supplier">
       <End Role="Supplier" EntitySet="Supplier" />
       <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductImage_Product" Association="Self.FK_ProductImage_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductImage" EntitySet="ProductImage" />
     </AssociationSet>
     <AssociationSet Name="FK_TransportOrder_Store" Association="Self.FK_TransportOrder_Store">
       <End Role="Store" EntitySet="Store" />
