@@ -52,7 +52,7 @@ namespace SWD.Api.Controllers
             }
 
             //Check Cusomter Facebook email exitested
-            var customer = customerApi.Get().Where(q => q.fbEmail.Equals(fbEmail)).FirstOrDefault();
+            var customer = customerApi.Get().Where(q => q.fbEmail != null && q.fbEmail.Equals(fbEmail)).FirstOrDefault();
             if (customer != null)
             {
                 //Check customer membershipcard
@@ -107,7 +107,7 @@ namespace SWD.Api.Controllers
                                 accessToken = newToken,
                                 isfirstLogin = true,
                                 isPhoneNoLogin = false,
-                                CustomerInfo = customer
+                                CustomerInfo = createdCustomer
                             }
                         },
                     }, JsonRequestBehavior.AllowGet);
@@ -249,7 +249,9 @@ namespace SWD.Api.Controllers
                             product_id = p.ID,
                             product_name = p.Name,
                             price = p.Price,
-                            cat_id = p.CategoryID
+                            cat_id = p.CategoryID,
+                            size = p.Size,
+                            color = p.Color
                         }).ToList();
 
             //get product category
