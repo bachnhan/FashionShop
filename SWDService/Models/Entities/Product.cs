@@ -19,6 +19,7 @@ namespace HmsService.Models.Entities
         {
             this.InventoryCheckingDetails = new HashSet<InventoryCheckingDetail>();
             this.OrderDetails = new HashSet<OrderDetail>();
+            this.ProductImages = new HashSet<ProductImage>();
             this.TransportOrderDetails = new HashSet<TransportOrderDetail>();
         }
     
@@ -29,9 +30,8 @@ namespace HmsService.Models.Entities
         public string Description { get; set; }
         public int CategoryID { get; set; }
         public int SupplierId { get; set; }
-        public string PicUrl { get; set; }
-        public Nullable<int> ParentProductId { get; set; }
         public decimal Price { get; set; }
+        public Nullable<int> ParentProductId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InventoryCheckingDetail> InventoryCheckingDetails { get; set; }
@@ -39,6 +39,8 @@ namespace HmsService.Models.Entities
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
         public virtual Supplier Supplier { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductImage> ProductImages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TransportOrderDetail> TransportOrderDetails { get; set; }
     }

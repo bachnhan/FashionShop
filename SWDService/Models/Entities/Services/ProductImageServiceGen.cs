@@ -7,19 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HmsService.Models.Entities
+namespace HmsService.Models.Entities.Services
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
-    {
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public Nullable<int> CusomerID { get; set; }
-        public Nullable<int> EmployeeID { get; set; }
     
-        public virtual Customer Customer { get; set; }
-        public virtual Employee Employee { get; set; }
+    public partial interface IProductImageService : SkyWeb.DatVM.Data.IBaseService<ProductImage>
+    {
+    }
+    
+    public partial class ProductImageService : SkyWeb.DatVM.Data.BaseService<ProductImage>, IProductImageService
+    {
+        public ProductImageService(SkyWeb.DatVM.Data.IUnitOfWork unitOfWork, Repositories.IProductImageRepository repository) : base(unitOfWork, repository)
+        {
+        }
     }
 }

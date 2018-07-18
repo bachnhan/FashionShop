@@ -1,29 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="HmsEntitiesStoreContainer" CdmEntityContainer="Entities">
-    <EntitySetMapping Name="Accounts">
-      <EntityTypeMapping TypeName="HmsEntities.Account">
-        <MappingFragment StoreEntitySet="Account">
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="CusomerID" ColumnName="CusomerID" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Employees">
-      <EntityTypeMapping TypeName="HmsEntities.Employee">
-        <MappingFragment StoreEntitySet="Employee">
-          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-          <ScalarProperty Name="Salary" ColumnName="Salary" />
-          <ScalarProperty Name="Roles" ColumnName="Roles" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="InventoryCheckings">
       <EntityTypeMapping TypeName="HmsEntities.InventoryChecking">
         <MappingFragment StoreEntitySet="InventoryChecking">
@@ -91,6 +68,8 @@
     <EntitySetMapping Name="Stores">
       <EntityTypeMapping TypeName="HmsEntities.Store">
         <MappingFragment StoreEntitySet="Store">
+          <ScalarProperty Name="lon" ColumnName="lon" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -135,6 +114,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="HmsEntities.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="CusomerID" ColumnName="CusomerID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="HmsEntities.Customer">
         <MappingFragment StoreEntitySet="Customer">
@@ -148,12 +137,34 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="HmsEntities.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="Roles" ColumnName="Roles" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductImages">
+      <EntityTypeMapping TypeName="HmsEntities.ProductImage">
+        <MappingFragment StoreEntitySet="ProductImage">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="HmsEntities.Product">
         <MappingFragment StoreEntitySet="Product">
-          <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="ParentProductId" ColumnName="ParentProductId" />
-          <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
           <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
           <ScalarProperty Name="Description" ColumnName="Description" />

@@ -7,19 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HmsService.Models.Entities
+namespace HmsService.Sdk
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class ProductImageApi : HmsService.Sdk.BaseSdkApi<HmsService.Models.Entities.ProductImage, HmsService.ViewModels.ProductImageViewModel, HmsService.Models.Entities.Services.IProductImageService>
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public Nullable<int> CusomerID { get; set; }
-        public Nullable<int> EmployeeID { get; set; }
-    
-        public virtual Customer Customer { get; set; }
-        public virtual Employee Employee { get; set; }
+    	
     }
 }

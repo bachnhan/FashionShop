@@ -12,18 +12,16 @@ namespace HmsService.ViewModels
     using System;
     using System.Collections.Generic;
     
-    public partial class StoreViewModel : SkyWeb.DatVM.Mvc.BaseEntityViewModel<HmsService.Models.Entities.Store>
+    public partial class ProductImageViewModel : SkyWeb.DatVM.Mvc.BaseEntityViewModel<HmsService.Models.Entities.ProductImage>
     {
     	
     			public virtual int ID { get; set; }
-    			public virtual string Name { get; set; }
-    			public virtual string Address { get; set; }
-    			public virtual int Status { get; set; }
-    			public virtual string lat { get; set; }
-    			public virtual string lon { get; set; }
+    			public virtual Nullable<int> ProductId { get; set; }
+    			public virtual string PicUrl { get; set; }
+    			public virtual Nullable<int> DisplayOrder { get; set; }
     	
-    	public StoreViewModel() : base() { }
-    	public StoreViewModel(HmsService.Models.Entities.Store entity) : base(entity) { }
+    	public ProductImageViewModel() : base() { }
+    	public ProductImageViewModel(HmsService.Models.Entities.ProductImage entity) : base(entity) { }
     
     }
 }

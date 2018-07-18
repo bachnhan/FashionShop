@@ -8,37 +8,40 @@ namespace HmsService.Models
 {
     public static class ConstantManager
     {
-        public static int STT_SUCCESS = 0;
-        public static int STT_FAIL = 1;
-        public static int STT_MISSING_PARAM = 2;
-        public static int STT_UNAUTHORIZED = 3;
-        public static int STATUS_SUCCESS = 200;
+        public const int STT_SUCCESS = 0;
+        public const int STT_FAIL = 1;
+        public const int STT_MISSING_PARAM = 2;
+        public const int STT_UNAUTHORIZED = 3;
+        public const int STATUS_SUCCESS = 200;
 
-        public static string MES_LOGIN_SUCCESS = "Login successfully";
-        public static string MES_LOGIN_FAIL = "Login fail";
-        public static string MES_UPDATE_SUCCESS = "Update successfully";
-        public static string MES_UPDATE_FAIL = "Update fail";
-        public static string MES_MISSING_PARAM = "Missing parameter";
-        public static string MES_UNVALID_TOKEN = "Token is unvalid or expired";
+        public const string MES_LOGIN_SUCCESS = "Login successfully";
+        public const string MES_LOGIN_FAIL = "Login fail";
+        public const string MES_UPDATE_SUCCESS = "Update successfully";
+        public const string MES_UPDATE_FAIL = "Update fail";
+        public const string MES_MISSING_PARAM = "Missing parameter";
+        public const string MES_UNVALID_TOKEN = "Token is unvalid or expired";
         //check role khi xem store
-        public static string MES_STORE_UNAUTHENTICATED = "You do not have permission to see report of this store";
+        public const string MES_STORE_UNAUTHENTICATED = "You do not have permission to see report of this store";
         // check role khi nhan token
-        public static string MES_ROLE_UNAUTHENTICATED = "You do not have permission";
-        public static string MES_LOAD_REPORT_SUCCESS = "Load report success";
-        public static string MES_FAIL = "Return fail";
-        public static string MES_SUCCESS = "Return success";
-        public static string ROLE_ADMIN = "Administrator";
-        public static string ROLE_MANAGER = "StoreManager";
+        public const string MES_ROLE_UNAUTHENTICATED = "You do not have permission";
+        public const string MES_LOAD_REPORT_SUCCESS = "Load report success";
+        public const string MES_FAIL = "Return fail";
+        public const string MES_SUCCESS = "Return success";
+        public const string ROLE_ADMIN = "Administrator";
+        public const string ROLE_MANAGER = "StoreManager";
         
-        public static string MES_PROMOTION_FAIL = "Don't have promotion";
-        public static string MES_PROMOTION_SUCCESS = "Success";
-        public static string MES_STORE_FAIL = "Don't have store";
-        public static string MES_STORE_SUCCESS = "Success";
-        public static string MES_PAYMENT_CASH = "Thanh toán bằng tiền mặt";
-        public static string MES_PAYMENT_MOMO = "Thanh toán qua MomMo";
+        public const string MES_PROMOTION_FAIL = "Don't have promotion";
+        public const string MES_PROMOTION_SUCCESS = "Success";
+        public const string MES_STORE_FAIL = "Don't have store";
+        public const string MES_STORE_SUCCESS = "Success";
+        public const string MES_PAYMENT_CASH = "Thanh toán bằng tiền mặt";
+        public const string MES_PAYMENT_MOMO = "Thanh toán qua MomMo";
 
         public const string PRIVATE_KEY = "SWDSecretKey";
-        public static int MAX_RECORD = 25;
-        public static string DELIVERY = "DELIVERY";
+        public const int MAX_RECORD = 25;
+        public const string DELIVERY = "DELIVERY";
+        public const string PRODUCT_IMAGE_SERVER_BASEURL = "http://103.79.142.115:3333";
+        //public const string PRODUCT_IMAGE_SERVER_PATH = "C:\\PublicIIS\\Imageserver";
+        public const string PRODUCT_IMAGE_SERVER_PATH = "D:\\";
     }
 }

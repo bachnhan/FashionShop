@@ -12,14 +12,7 @@ namespace HmsService.Models.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class ProductImage : SkyWeb.DatVM.Data.IEntity
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public Nullable<int> CusomerID { get; set; }
-        public Nullable<int> EmployeeID { get; set; }
-    
-        public virtual Customer Customer { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

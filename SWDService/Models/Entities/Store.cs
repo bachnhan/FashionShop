@@ -17,20 +17,20 @@ namespace HmsService.Models.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Store()
         {
-            this.Employees = new HashSet<Employee>();
             this.InventoryCheckings = new HashSet<InventoryChecking>();
             this.Orders = new HashSet<Order>();
             this.TransportOrders = new HashSet<TransportOrder>();
             this.TransportOrders1 = new HashSet<TransportOrder>();
+            this.Employees = new HashSet<Employee>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public int Status { get; set; }
+        public string lat { get; set; }
+        public string lon { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InventoryChecking> InventoryCheckings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -39,5 +39,7 @@ namespace HmsService.Models.Entities
         public virtual ICollection<TransportOrder> TransportOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TransportOrder> TransportOrders1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }
