@@ -19,7 +19,7 @@ namespace HmsService.Models.Entities
         public Nullable<int> CusomerID { get; set; }
         public Nullable<int> EmployeeID { get; set; }
     
-        public virtual Employee Employee { get; set; }
         public virtual Customer Customer { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

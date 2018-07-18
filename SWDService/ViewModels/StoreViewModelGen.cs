@@ -19,6 +19,8 @@ namespace HmsService.ViewModels
     			public virtual string Name { get; set; }
     			public virtual string Address { get; set; }
     			public virtual int Status { get; set; }
+    			public virtual string lat { get; set; }
+    			public virtual string lon { get; set; }
     	
     	public StoreViewModel() : base() { }
     	public StoreViewModel(HmsService.Models.Entities.Store entity) : base(entity) { }
