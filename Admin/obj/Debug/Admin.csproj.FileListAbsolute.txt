@@ -96,7 +96,6 @@ C:\Users\Administrator\Documents\FashionShop\Admin\bin\Microsoft.AI.Web.xml
 C:\Users\Administrator\Documents\FashionShop\Admin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Administrator\Documents\FashionShop\Admin\bin\AutoMapper.xml
 C:\Users\Administrator\Documents\FashionShop\Admin\bin\Autofac.xml
-C:\Users\Administrator\Documents\FashionShop\Admin\bin\EntityFramework.xml
 C:\Users\Administrator\Documents\FashionShop\Admin\bin\Autofac.Integration.Mvc.xml
 C:\Users\Administrator\Documents\FashionShop\Admin\obj\Debug\Admin.csprojAssemblyReference.cache
 C:\Users\Administrator\Documents\FashionShop\Admin\obj\Debug\Admin.csproj.CoreCompileInputs.cache

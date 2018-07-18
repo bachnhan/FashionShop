@@ -12,7 +12,11 @@ namespace Admin.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Account
+        public ActionResult Index()
+        {
+            return View();
+        }
+        // GET: Account/Login
         public ActionResult Login(string username, string password)
         {
             //AccountViewModel a = new AccountViewModel() {
@@ -21,9 +25,9 @@ namespace Admin.Controllers
             //};
             //AccountApi api = new AccountApi();
             //api.Create(a);
-            SWDEntities db = new SWDEntities();
-            var user = db.Accounts.Where(q => q.Username == username && q.Password == password);
-            if(user != null)
+            AccountApi accountapi = new AccountApi();
+            var result = accountapi.Get().Where(q => q.Username == username && q.Password == password);
+            if(result != null)
             {
                 return Redirect("/Home/Index");
             }
