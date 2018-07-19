@@ -17,7 +17,8 @@ namespace Admin.Controllers
             return View();
         }
         // GET: Account/Login
-        public ActionResult Login(string username, string password, string url)
+        [HttpPost]
+        public ActionResult Login(string username, string password)
         {
             //AccountViewModel a = new AccountViewModel() {
             //    Username = username,
@@ -25,15 +26,11 @@ namespace Admin.Controllers
             //};
             //AccountApi api = new AccountApi();
             //api.Create(a);
-        
-            url = "google.com";
             AccountApi accountapi = new AccountApi();
             var result = accountapi.Get().Where(q => q.Username == username && q.Password == password);
             if(result != null)
             {
-                //return Redirect(url);
-                //return View();
-                return Content("Login failed");
+                return RedirectToAction("Index","Home");
             }
             return Content("Login failed");
         }
