@@ -17,6 +17,7 @@ namespace Admin.Controllers
             return View();
         }
         // GET: Account/Login
+        [HttpPost]
         public ActionResult Login(string username, string password)
         {
             //AccountViewModel a = new AccountViewModel() {
@@ -29,7 +30,7 @@ namespace Admin.Controllers
             var result = accountapi.Get().Where(q => q.Username == username && q.Password == password);
             if(result != null)
             {
-                return Redirect("/Home/Index");
+                return RedirectToAction("Index","Home");
             }
             return Content("Login failed");
         }
