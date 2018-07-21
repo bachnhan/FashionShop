@@ -3,6 +3,67 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 
-<h2>Index</h2>
+<h2>Product</h2>
+<table id="productTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Color</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Supplier</th>
+            <th>Price</th>
+            <th>Parent Product</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+</table>
 
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+
+            $.ajax({
+                url: "@Url.Action("GetAllProducts", "Product")",
+                method: "post",
+                dataType: "json",
+                success: function (data) {
+                    $("#productTable").dataTable({
+                        "aaData": data,
+                        "aoColumnDefs": [
+                            {
+                                "aTargets": [1, 2, 3],
+                                "sClass": "text-center"
+                            },
+                    });
+                }
+            });
+            @*$("#productTable").DataTable({
+                "ajax": {
+                    "url": "@Url.Action("GetAllProducts", "Product")",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "success:"
+                "column": [
+                    { "data": "ID" },
+                    { "data": "Name" },
+                    { "data": "Size" },
+                    { "data": "Color" },
+                    { "data": "Description" },
+                    { "data": "Category" },
+                    { "data": "Supplier" },
+                    { "data": "Price" },
+                    { "data": "Parent Product" },
+                    { "data": "Active" },
+                ]
+            });*@
+        });
+    </script>
+    }
