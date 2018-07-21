@@ -32,6 +32,7 @@ namespace HmsService.Models.Entities
         public int SupplierId { get; set; }
         public decimal Price { get; set; }
         public Nullable<int> ParentProductId { get; set; }
+        public bool Active { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InventoryCheckingDetail> InventoryCheckingDetails { get; set; }

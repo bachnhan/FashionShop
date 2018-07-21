@@ -22,6 +22,7 @@ namespace HmsService.ViewModels
     			public virtual Nullable<System.DateTime> DateOfBirth { get; set; }
     			public virtual string Phone { get; set; }
     			public virtual int StoreID { get; set; }
+    			public virtual bool Active { get; set; }
     	
     	public EmployeeViewModel() : base() { }
     	public EmployeeViewModel(HmsService.Models.Entities.Employee entity) : base(entity) { }

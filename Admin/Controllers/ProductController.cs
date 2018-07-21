@@ -21,8 +21,13 @@ namespace Admin.Controllers
         public JsonResult GetAllProducts()
         {
             ProductApi productApi = new ProductApi();
-            List<ProductViewModel> result = productApi.GetActive().Where(q => q.ParentProductId != null).ToList();
+            List<ProductViewModel> result = productApi.GetActive().Where(q => q.ParentProductId == null).ToList();
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult AddNewProduct(string name, string size, string color, string description, string category, string supplier, double price)
+        {
+            return View();
         }
     }
 }

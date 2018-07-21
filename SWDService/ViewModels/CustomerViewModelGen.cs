@@ -22,6 +22,7 @@ namespace HmsService.ViewModels
     			public virtual string fbEmail { get; set; }
     			public virtual Nullable<bool> Gender { get; set; }
     			public virtual Nullable<System.DateTime> Birthday { get; set; }
+    			public virtual bool Active { get; set; }
     	
     	public CustomerViewModel() : base() { }
     	public CustomerViewModel(HmsService.Models.Entities.Customer entity) : base(entity) { }
