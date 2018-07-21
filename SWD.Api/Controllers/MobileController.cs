@@ -358,7 +358,16 @@ namespace SWD.Api.Controllers
                 {
                 }
             }
-
+            return Json(new
+            {
+                status = new
+                {
+                    success = false,
+                    status = ConstantManager.STATUS_SUCCESS,
+                    message = ConstantManager.MES_CHECK_ORDER_DETAIL_FAIL
+                },
+                data = new { }
+            });
         }
     }
 }

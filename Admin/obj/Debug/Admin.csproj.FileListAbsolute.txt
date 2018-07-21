@@ -124,7 +124,6 @@ C:\Users\Nhan\Documents\FashionShop\Admin\bin\roslyn\Microsoft.VisualBasic.Core.
 C:\Users\Nhan\Documents\FashionShop\Admin\bin\roslyn\System.AppContext.dll
 C:\Users\Nhan\Documents\FashionShop\Admin\bin\roslyn\System.Collections.Immutable.dll
 C:\Users\Nhan\Documents\FashionShop\Admin\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\Nhan\Documents\FashionShop\Admin\bin\roslyn\System.IO.Compression.dll
 C:\Users\Nhan\Documents\FashionShop\Admin\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\Nhan\Documents\FashionShop\Admin\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\Nhan\Documents\FashionShop\Admin\bin\roslyn\System.Reflection.Metadata.dll
