@@ -25,7 +25,7 @@
 
 @section scripts{
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    
+
     <script>
         $(document).ready(function () {
 
@@ -35,35 +35,22 @@
                 dataType: "json",
                 success: function (data) {
                     $("#productTable").dataTable({
-                        "aaData": data,
-                        "aoColumnDefs": [
-                            {
-                                "aTargets": [1, 2, 3],
-                                "sClass": "text-center"
-                            },
+                        data : data.data,
+                        columns: [
+                            { data: 'ID' },
+                            { data: "Name" },
+                            { data: "Size" },
+                            { data: "Color" },
+                            { data: "Description" },
+                            { data: "CategoryID" },
+                            { data: "SupplierId" },
+                            { data: "Price" },
+                            { data: "ParentProductId    " },
+                            //{ data: "Active" }
+                        ],
                     });
                 }
             });
-            @*$("#productTable").DataTable({
-                "ajax": {
-                    "url": "@Url.Action("GetAllProducts", "Product")",
-                    "type": "GET",
-                    "datatype": "json"
-                },
-                "success:"
-                "column": [
-                    { "data": "ID" },
-                    { "data": "Name" },
-                    { "data": "Size" },
-                    { "data": "Color" },
-                    { "data": "Description" },
-                    { "data": "Category" },
-                    { "data": "Supplier" },
-                    { "data": "Price" },
-                    { "data": "Parent Product" },
-                    { "data": "Active" },
-                ]
-            });*@
         });
     </script>
-    }
+}
