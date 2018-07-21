@@ -25,6 +25,7 @@
           <Property Name="fbEmail" Type="varchar" MaxLength="250" />
           <Property Name="Gender" Type="bit" />
           <Property Name="Birthday" Type="datetime" />
+          <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -37,6 +38,7 @@
           <Property Name="DateOfBirth" Type="date" />
           <Property Name="Phone" Type="varchar" MaxLength="20" />
           <Property Name="StoreID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="InventoryChecking">
           <Key>
@@ -103,6 +105,7 @@
           <Property Name="SupplierId" Type="int" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="ParentProductId" Type="int" />
+          <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -906,6 +909,7 @@
           <Property Name="Birthday" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Accounts" Relationship="HmsEntities.FK_Account_Customer" FromRole="Customer" ToRole="Account" />
           <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Customer" FromRole="Customer" ToRole="Order" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -921,6 +925,7 @@
           <NavigationProperty Name="Accounts" Relationship="HmsEntities.FK_Account_Employee" FromRole="Employee" ToRole="Account" />
           <NavigationProperty Name="Store" Relationship="HmsEntities.FK_Employee_Store" FromRole="Employee" ToRole="Store" />
           <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Employee" FromRole="Employee" ToRole="Order" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_Account_Customer">
           <End Type="HmsEntities.Customer" Role="Customer" Multiplicity="0..1" />
@@ -1011,6 +1016,7 @@
           <NavigationProperty Name="Supplier" Relationship="HmsEntities.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
           <NavigationProperty Name="ProductImages" Relationship="HmsEntities.FK_ProductImage_Product" FromRole="Product" ToRole="ProductImage" />
           <NavigationProperty Name="TransportOrderDetails" Relationship="HmsEntities.FK_TransportOrderDetail_Product" FromRole="Product" ToRole="TransportOrderDetail" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_InventoryCheckingDetail_Product">
           <End Type="HmsEntities.Product" Role="Product" Multiplicity="1" />
@@ -1216,6 +1222,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="HmsEntities.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="fbEmail" ColumnName="fbEmail" />
@@ -1229,6 +1236,7 @@
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="HmsEntities.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="StoreID" ColumnName="StoreID" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
@@ -1252,6 +1260,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="HmsEntities.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="ParentProductId" ColumnName="ParentProductId" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />

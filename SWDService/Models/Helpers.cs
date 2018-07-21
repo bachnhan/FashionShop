@@ -41,7 +41,12 @@ namespace HmsService.Models
         public const int MAX_RECORD = 25;
         public const string DELIVERY = "DELIVERY";
         public const string PRODUCT_IMAGE_SERVER_BASEURL = "http://103.79.142.115:3333";
-        //public const string PRODUCT_IMAGE_SERVER_PATH = "C:\\PublicIIS\\Imageserver";
-        public const string PRODUCT_IMAGE_SERVER_PATH = "D:\\";
+        public const string PRODUCT_IMAGE_SERVER_PATH = "C:\\PublicIIS\\Imageserver";
+        public const string MES_CREATE_ORDER_FAIL = "Tạo đơn hàng không thành công";
+        public const string MES_CREATE_ORDER_SUCCESS = "Tạo đơn hàng thành công";
+        public const string MES_CHECK_CUSTOMER_FAIL = "Không tìm thấy khách hàng";
+        public const string MES_CHECK_EMPLOYEE_FAIL = "Không tìm thấy nhân viên";
+        public const string MES_CHECK_ORDER_DETAIL_FAIL = "Không có chi tiết hóa đơn ";
+        public const string MES_CHECK_PRODUCT_FAIL = "Không tìm thấy sản phẩm";
     }
 }
