@@ -127,6 +127,7 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="HmsEntities.Customer">
         <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="Birthday" ColumnName="Birthday" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="fbEmail" ColumnName="fbEmail" />
@@ -140,6 +141,7 @@
     <EntitySetMapping Name="Employees">
       <EntityTypeMapping TypeName="HmsEntities.Employee">
         <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="StoreID" ColumnName="StoreID" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
@@ -163,6 +165,7 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="HmsEntities.Product">
         <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="ParentProductId" ColumnName="ParentProductId" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />

@@ -20,6 +20,7 @@
     <Property Name="fbEmail" Type="varchar" MaxLength="250" />
     <Property Name="Gender" Type="bit" />
     <Property Name="Birthday" Type="datetime" />
+    <Property Name="Active" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -32,6 +33,7 @@
     <Property Name="DateOfBirth" Type="date" />
     <Property Name="Phone" Type="varchar" MaxLength="20" />
     <Property Name="StoreID" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="InventoryChecking">
     <Key>
@@ -98,6 +100,7 @@
     <Property Name="SupplierId" Type="int" Nullable="false" />
     <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="ParentProductId" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductCategory">
     <Key>

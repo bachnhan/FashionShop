@@ -28,6 +28,7 @@ namespace HmsService.Models.Entities
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Phone { get; set; }
         public int StoreID { get; set; }
+        public bool Active { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account> Accounts { get; set; }

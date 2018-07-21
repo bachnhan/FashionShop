@@ -400,6 +400,7 @@
     <Property Name="Birthday" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Accounts" Relationship="HmsEntities.FK_Account_Customer" FromRole="Customer" ToRole="Account" />
     <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Customer" FromRole="Customer" ToRole="Order" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -415,6 +416,7 @@
     <NavigationProperty Name="Accounts" Relationship="HmsEntities.FK_Account_Employee" FromRole="Employee" ToRole="Account" />
     <NavigationProperty Name="Store" Relationship="HmsEntities.FK_Employee_Store" FromRole="Employee" ToRole="Store" />
     <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Employee" FromRole="Employee" ToRole="Order" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
   <Association Name="FK_Account_Customer">
     <End Type="HmsEntities.Customer" Role="Customer" Multiplicity="0..1" />
@@ -505,6 +507,7 @@
     <NavigationProperty Name="Supplier" Relationship="HmsEntities.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
     <NavigationProperty Name="ProductImages" Relationship="HmsEntities.FK_ProductImage_Product" FromRole="Product" ToRole="ProductImage" />
     <NavigationProperty Name="TransportOrderDetails" Relationship="HmsEntities.FK_TransportOrderDetail_Product" FromRole="Product" ToRole="TransportOrderDetail" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
   <Association Name="FK_InventoryCheckingDetail_Product">
     <End Type="HmsEntities.Product" Role="Product" Multiplicity="1" />

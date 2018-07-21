@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 
 namespace SWD.Api.Controllers
@@ -27,6 +28,7 @@ namespace SWD.Api.Controllers
             return View();
         }
 
+        [System.Web.Mvc.HttpPost]
         public JsonResult LoginByFacebook(string fbAccessToken)
         {
             var customerApi = new CustomerApi();
@@ -282,6 +284,81 @@ namespace SWD.Api.Controllers
                 }
 
             }, JsonRequestBehavior.AllowGet);
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public JsonResult setOrder([FromBody]OrderViewModel order, string accessToken)
+        {
+            var orderApi = new OrderApi();
+            var customerApi = new CustomerApi();
+            var employeeApi = new EmployeeApi();
+            var productApi = new ProductApi();
+            //Check customer exist if customerId != 0 (customerId default is 0)
+            if (order.CustomerID != 0 && (order.CustomerID == null || customerApi.GetActive().Where(q => q.ID == order.CustomerID) == null))
+            {
+                return Json(new
+                {
+                    status = new
+                    {
+                        success = false,
+                        status = ConstantManager.STATUS_SUCCESS,
+                        message = ConstantManager.MES_CHECK_CUSTOMER_FAIL
+                    },
+                    data = new { }
+                });
+            }
+            //Check employee exist if employeeId != 0 (employeeId is 0 for online Order)
+            if (order.EmployeeID != 0 && (order.EmployeeID == null || employeeApi.GetActive().Where(q => q.ID == order.EmployeeID) == null))
+            {
+                return Json(new
+                {
+                    status = new
+                    {
+                        success = false,
+                        status = ConstantManager.STATUS_SUCCESS,
+                        message = ConstantManager.MES_CHECK_EMPLOYEE_FAIL
+                    },
+                    data = new { }
+                });
+            }
+            //Check order details
+            if (order.OrderDetails == null || order.OrderDetails.Count() == 0)
+            {
+                return Json(new
+                {
+                    status = new
+                    {
+                        success = false,
+                        status = ConstantManager.STATUS_SUCCESS,
+                        message = ConstantManager.MES_CHECK_ORDER_DETAIL_FAIL
+                    },
+                    data = new { }
+                });
+            }
+            //Calculate order
+            double totalAmount = 0;
+            foreach (var orderdetail in order.OrderDetails)
+            {
+                //Check Order detail ProductId not null
+                if (orderdetail.ProductID == null){
+                    return Json(new
+                    {
+                        status = new
+                        {
+                            success = false,
+                            status = ConstantManager.STATUS_SUCCESS,
+                            message = ConstantManager.MES_CHECK_ORDER_DETAIL_FAIL
+                        },
+                        data = new { }
+                    });
+                }
+                //Check product exist and is not a parent product
+                var product = productApi.GetActive().Where(q => q.ID == orderdetail.ProductID).FirstOrDefault();
+                if (product == null || product.ParentProductId == null)
+                {
+                }
+            }
+
         }
     }
 }

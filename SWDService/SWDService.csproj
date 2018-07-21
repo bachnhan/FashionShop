@@ -436,6 +436,7 @@
     <Compile Include="ViewModels\OrderDetailViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
