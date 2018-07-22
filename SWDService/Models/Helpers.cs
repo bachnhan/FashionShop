@@ -29,7 +29,7 @@ namespace HmsService.Models
         public const string MES_SUCCESS = "Return success";
         public const string ROLE_ADMIN = "Administrator";
         public const string ROLE_MANAGER = "StoreManager";
-        
+
         public const string MES_PROMOTION_FAIL = "Don't have promotion";
         public const string MES_PROMOTION_SUCCESS = "Success";
         public const string MES_STORE_FAIL = "Don't have store";
@@ -41,7 +41,8 @@ namespace HmsService.Models
         public const int MAX_RECORD = 25;
         public const string DELIVERY = "DELIVERY";
         public const string PRODUCT_IMAGE_SERVER_BASEURL = "http://103.79.142.115:3333";
-        //public const string PRODUCT_IMAGE_SERVER_PATH = "C:\\PublicIIS\\Imageserver";
-        public const string PRODUCT_IMAGE_SERVER_PATH = "D:\\";
+        public const string PRODUCT_IMAGE_SERVER_PATH = "C:\\PublicIIS\\Imageserver";
+        //public const string PRODUCT_IMAGE_SERVER_PATH = "D:\\";
+        public const string IMAGE_FORMAT_EXTENSION = ".Png";
     }
 }

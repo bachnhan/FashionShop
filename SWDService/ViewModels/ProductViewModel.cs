@@ -20,5 +20,6 @@ namespace HmsService.ViewModels
         }
         public ProductCategoryViewModel ProductCategory { get; set; }
         public SupplierViewModel Supplier { get; set; }
+        public List<ProductImageViewModel> ProductImages { get; set; }
     }
 }

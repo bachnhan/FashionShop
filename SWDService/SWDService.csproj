@@ -479,6 +479,7 @@
     <Compile Include="Sdk\PaymentApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sdk\ProductApi.cs" />
     <Compile Include="Sdk\ProductApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>

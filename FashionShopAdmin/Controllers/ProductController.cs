@@ -8,6 +8,9 @@ using HmsService.ViewModels;
 using HmsService.Sdk;
 using HmsService.Models.Entities;
 using System.Text;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Admin.Controllers
 {
@@ -26,13 +29,15 @@ namespace Admin.Controllers
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult AddNewProduct(string name, string[] sizeList, string[] colorList, string description, int categoryID, int supplierID, decimal price)
+        [HttpPost]
+        public ActionResult AddNewProduct(string name, string[] sizeList, string[] colorList, string description,
+            int categoryID, int supplierID, decimal price)
         {
             StringBuilder size = new StringBuilder();
             StringBuilder color = new StringBuilder();
 
-            for(int i = 0; i < sizeList.Length; i++)
-            {             
+            for (int i = 0; i < sizeList.Length; i++)
+            {
                 size.Append(sizeList[i]);
                 if (i < sizeList.Length - 1)
                     size.Append(",");
@@ -45,6 +50,33 @@ namespace Admin.Controllers
                     color.Append(",");
             }
 
+            List<ProductImageViewModel> listProductImage = new List<ProductImageViewModel>();
+            ProductImageViewModel productImage = new ProductImageViewModel();
+            var orderCount = 0;
+            byte[] avatarImage = null;
+            if (Request.Files.Count > 0)
+            {
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    var file = Request.Files[i];
+                    int fileSizeInBytes = file.ContentLength;
+
+                    using (var br = new BinaryReader(file.InputStream))
+                    {
+                        avatarImage = br.ReadBytes(fileSizeInBytes);
+                    }
+                    string picUrl = null;
+                    if (avatarImage != null)
+                    {
+                        picUrl = SaveImageToServer(avatarImage);
+                        productImage.PicUrl = picUrl;
+                        productImage.DisplayOrder = ++orderCount;
+                        listProductImage.Add(productImage);
+                    }
+                }
+
+            }
+
             ProductViewModel newProduct = new ProductViewModel()
             {
                 Name = name,
@@ -54,16 +86,90 @@ namespace Admin.Controllers
                 CategoryID = categoryID,
                 SupplierId = supplierID,
                 Price = price,
+                ProductImages = listProductImage,
                 Active = true,
             };
             ProductApi productApi = new ProductApi();
             productApi.Create(newProduct);
-            return Json(new { success = true, message = "Successfully added!" },JsonRequestBehavior.AllowGet);
+            return Json(new { success = true, message = "Successfully added!" }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult EditProduct(int ID, string name, string[] sizeList, string[] colorList, string description, int categoryID, int supplierID, decimal price)
+        [HttpPost]
+        public ActionResult EditProduct(string name, string[] sizeList, string[] colorList, string description,
+            int categoryID, int supplierID, decimal price, int ID)
         {
-            return View();
+            StringBuilder size = new StringBuilder();
+            StringBuilder color = new StringBuilder();
+
+            for (int i = 0; i < sizeList.Length; i++)
+            {
+                size.Append(sizeList[i]);
+                if (i < sizeList.Length - 1)
+                    size.Append(",");
+            }
+
+            for (int i = 0; i < colorList.Length; i++)
+            {
+                color.Append(colorList[i]);
+                if (i < colorList.Length - 1)
+                    color.Append(",");
+            }
+
+            List<ProductImageViewModel> listProductImage = new List<ProductImageViewModel>();
+            ProductImageViewModel productImage = new ProductImageViewModel();
+            var orderCount = 0;
+            byte[] avatarImage = null;
+            if (Request.Files.Count > 0)
+            {
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    var file = Request.Files[i];
+                    int fileSizeInBytes = file.ContentLength;
+
+                    using (var br = new BinaryReader(file.InputStream))
+                    {
+                        avatarImage = br.ReadBytes(fileSizeInBytes);
+                    }
+                    string picUrl = null;
+                    if (avatarImage != null)
+                    {
+                        picUrl = SaveImageToServer(avatarImage);
+                        productImage.PicUrl = picUrl;
+                        productImage.DisplayOrder = ++orderCount;
+                        listProductImage.Add(productImage);
+                    }
+                }
+
+            }
+
+            ProductApi productApi = new ProductApi();
+            var product = productApi.GetActive().Where(q => q.ID == ID).FirstOrDefault();
+            product.Name = name;
+            product.Size = size.ToString();
+            product.Color = color.ToString();
+            product.Description = description;
+            product.CategoryID = categoryID;
+            product.Supplier = null;
+            product.SupplierId = supplierID;
+            product.Price = price;
+            product.ProductImages = listProductImage;
+            productApi.EditProduct(product);
+            return Json(new { success = true, message = "Successfully added!" }, JsonRequestBehavior.AllowGet);
+        }
+
+        private string SaveImageToServer(byte[] avatarImage)
+        {
+            var ms = new MemoryStream(avatarImage);
+            var image = Image.FromStream(ms);
+            string imageServerPath = ConstantManager.PRODUCT_IMAGE_SERVER_PATH;
+            if (Directory.Exists(imageServerPath) == false)
+            {
+                Directory.CreateDirectory(imageServerPath);
+            }
+            string fileName = DateTime.Now.Ticks.ToString() + ConstantManager.IMAGE_FORMAT_EXTENSION;
+            string filePath = imageServerPath + "\\" + fileName;
+            image.Save(filePath, ImageFormat.Png);
+            return ConstantManager.PRODUCT_IMAGE_SERVER_BASEURL + "/" + fileName;
         }
     }
 }
