@@ -8,6 +8,9 @@ using HmsService.ViewModels;
 using HmsService.Sdk;
 using HmsService.Models.Entities;
 using System.Text;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Admin.Controllers
 {
@@ -26,13 +29,15 @@ namespace Admin.Controllers
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult AddNewProduct(string name, string[] sizeList, string[] colorList, string description, int categoryID, int supplierID, decimal price)
+        [HttpPost]
+        public ActionResult AddNewProduct(string name,string[] sizeList,string[] colorList,string description,
+            int categoryID,int supplierID, decimal price)
         {
             StringBuilder size = new StringBuilder();
             StringBuilder color = new StringBuilder();
 
-            for(int i = 0; i < sizeList.Length; i++)
-            {             
+            for (int i = 0; i < sizeList.Length; i++)
+            {
                 size.Append(sizeList[i]);
                 if (i < sizeList.Length - 1)
                     size.Append(",");
@@ -45,6 +50,24 @@ namespace Admin.Controllers
                     color.Append(",");
             }
 
+            byte[] avatarImage = null;
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+                int fileSizeInBytes = file.ContentLength;
+
+                using (var br = new BinaryReader(file.InputStream))
+                {
+                    avatarImage = br.ReadBytes(fileSizeInBytes);
+                }
+            }
+
+            string picUrl = null;
+            if (avatarImage != null)
+            {
+                picUrl = SaveImageToServer(avatarImage);
+            }
+
             ProductViewModel newProduct = new ProductViewModel()
             {
                 Name = name,
@@ -54,11 +77,27 @@ namespace Admin.Controllers
                 CategoryID = categoryID,
                 SupplierId = supplierID,
                 Price = price,
+                PicUrl = picUrl,
                 Active = true,
             };
             ProductApi productApi = new ProductApi();
             productApi.Create(newProduct);
             return Json(new { success = true, message = "Successfully added!" },JsonRequestBehavior.AllowGet);
+        }
+
+        private string SaveImageToServer(byte[] avatarImage)
+        {
+            var ms = new MemoryStream(avatarImage);
+            var image = Image.FromStream(ms);
+            string imageServerPath = ConstantManager.PRODUCT_IMAGE_SERVER_PATH;
+            if (Directory.Exists(imageServerPath) == false)
+            {
+                Directory.CreateDirectory(imageServerPath);
+            }
+            string fileName = DateTime.Now.Ticks.ToString() + ConstantManager.IMAGE_FORMAT_EXTENSION;
+            string filePath = imageServerPath + "\\" + fileName;
+            image.Save(filePath, ImageFormat.Png);
+            return ConstantManager.PRODUCT_IMAGE_SERVER_BASEURL + "/" + fileName;
         }
     }
 }

@@ -50,5 +50,6 @@ namespace HmsService.Models
         public const string MES_CHECK_ORDER_DETAIL_FAIL = "Không có chi tiết hóa đơn ";
         public const string MES_CHECK_PRODUCT_FAIL = "Không tìm thấy sản phẩm";
         public const string MES_CHECK_QUANTITY_FAIL = "Số lượng chi tiết đơn hàng không phù hợp";
+        public const string IMAGE_FORMAT_EXTENSION = ".Png";
     }
 }

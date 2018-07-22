@@ -36,8 +36,8 @@
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac.Integration.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.Mvc5.3.2.0\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.3.3.0\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
@@ -138,6 +138,30 @@
     <Compile Include="Models\Entities\AccountRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\AspNetRole.cs">
+      <DependentUpon>SWDEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\AspNetRoleRefined.cs">
+      <DependentUpon>EntityRefinery.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\AspNetUser.cs">
+      <DependentUpon>SWDEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\AspNetUserClaim.cs">
+      <DependentUpon>SWDEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\AspNetUserClaimRefined.cs">
+      <DependentUpon>EntityRefinery.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\AspNetUserLogin.cs">
+      <DependentUpon>SWDEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\AspNetUserLoginRefined.cs">
+      <DependentUpon>EntityRefinery.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\AspNetUserRefined.cs">
+      <DependentUpon>EntityRefinery.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\Customer.cs">
       <DependentUpon>SWDEntities.tt</DependentUpon>
     </Compile>
@@ -167,6 +191,18 @@
     <Compile Include="Models\Entities\ProductImageRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\Repositories\AspNetRoleRepositoryGen.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Repositories\AspNetUserClaimRepositoryGen.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Repositories\AspNetUserLoginRepositoryGen.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Repositories\AspNetUserRepositoryGen.cs">
+      <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\Repositories\InventoryCheckingDetailRepositoryGen.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
@@ -181,6 +217,18 @@
     </Compile>
     <Compile Include="Models\Entities\Repositories\TransportOrderRepositoryGen.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Services\AspNetRoleServiceGen.cs">
+      <DependentUpon>Services.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Services\AspNetUserClaimServiceGen.cs">
+      <DependentUpon>Services.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Services\AspNetUserLoginServiceGen.cs">
+      <DependentUpon>Services.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Services\AspNetUserServiceGen.cs">
+      <DependentUpon>Services.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Services\InventoryCheckingDetailServiceGen.cs">
       <DependentUpon>Services.tt</DependentUpon>
@@ -361,6 +409,18 @@
     <Compile Include="Sdk\AccountApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sdk\AspNetRoleApiGen.cs">
+      <DependentUpon>Sdk.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sdk\AspNetUserApiGen.cs">
+      <DependentUpon>Sdk.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sdk\AspNetUserClaimApiGen.cs">
+      <DependentUpon>Sdk.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sdk\AspNetUserLoginApiGen.cs">
+      <DependentUpon>Sdk.tt</DependentUpon>
+    </Compile>
     <Compile Include="Sdk\BaseSdkApi.cs" />
     <Compile Include="Sdk\CustomerApi.cs" />
     <Compile Include="Sdk\CustomerApiGen.cs">
@@ -412,6 +472,18 @@
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AccountViewModelGen.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AspNetRoleViewModelGen.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AspNetUserClaimViewModelGen.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AspNetUserLoginViewModelGen.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AspNetUserViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CustomerViewModelGen.cs">
