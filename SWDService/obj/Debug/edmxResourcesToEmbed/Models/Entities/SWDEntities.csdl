@@ -341,6 +341,7 @@
     <NavigationProperty Name="Accounts" Relationship="HmsEntities.FK_Account_Customer" FromRole="Customer" ToRole="Account" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Customer" FromRole="Customer" ToRole="Order" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -357,6 +358,7 @@
     <NavigationProperty Name="Store" Relationship="HmsEntities.FK_Employee_Store" FromRole="Employee" ToRole="Store" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Employee" FromRole="Employee" ToRole="Order" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
   <Association Name="FK_Account_Customer">
     <End Type="HmsEntities.Customer" Role="Customer" Multiplicity="0..1" />
