@@ -30,8 +30,6 @@ namespace HmsService.Models.Entities
         public virtual DbSet<InventoryChecking> InventoryCheckings { get; set; }
         public virtual DbSet<InventoryCheckingDetail> InventoryCheckingDetails { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
@@ -42,6 +40,8 @@ namespace HmsService.Models.Entities
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<ProductImage> ProductImages { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Payment> Payments { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

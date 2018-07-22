@@ -18,21 +18,27 @@ namespace HmsService.Models.Entities
         public Order()
         {
             this.OrderDetails = new HashSet<OrderDetail>();
+            this.Payments = new HashSet<Payment>();
         }
     
         public int ID { get; set; }
-        public int EmployeeID { get; set; }
-        public int PaymentID { get; set; }
+        public string InvoiceID { get; set; }
+        public Nullable<int> EmployeeID { get; set; }
         public int CustomerID { get; set; }
-        public System.DateTime Date { get; set; }
+        public System.DateTime CheckInDate { get; set; }
         public int StoreID { get; set; }
         public int Status { get; set; }
+        public decimal TotalAmount { get; set; }
+        public string DeliveryAddress { get; set; }
+        public string ReceiverName { get; set; }
+        public string ReceiverPhone { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        public virtual Payment Payment { get; set; }
-        public virtual Store Store { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual Store Store { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Payment> Payments { get; set; }
     }
 }

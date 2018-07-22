@@ -16,6 +16,7 @@ namespace HmsService.ViewModels
     {
     	
     			public virtual int ID { get; set; }
+    			public virtual int ToOrderID { get; set; }
     			public virtual int Type { get; set; }
     			public virtual decimal Amount { get; set; }
     			public virtual int Status { get; set; }

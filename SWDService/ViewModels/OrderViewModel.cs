@@ -20,7 +20,6 @@ namespace HmsService.ViewModels
         }
         public StoreViewModel Store { get; set; }
         public CustomerViewModel Customer { get; set; }
-        public EmployeeViewModel Employee { get; set; }
         public List<PaymentViewModel> Payments { get; set; }
         public IEnumerable<OrderDetailViewModel> OrderDetails { get; set; }
     }

@@ -293,6 +293,13 @@ namespace SWD.Api.Controllers
             var customerApi = new CustomerApi();
             var employeeApi = new EmployeeApi();
             var productApi = new ProductApi();
+            //Get CustomerId from token
+            int number;
+            order.CustomerID = 0;
+            if (Int32.TryParse(getCustomerIdFromToken(accessToken),out number))
+            {
+                order.CustomerID = number;
+            }
             //Check customer exist if customerId != 0 (customerId default is 0)
             if (order.CustomerID != 0 && (order.CustomerID == null || customerApi.GetActive().Where(q => q.ID == order.CustomerID) == null))
             {
@@ -308,19 +315,7 @@ namespace SWD.Api.Controllers
                 });
             }
             //Check employee exist if employeeId != 0 (employeeId is 0 for online Order)
-            if (order.EmployeeID != 0 && (order.EmployeeID == null || employeeApi.GetActive().Where(q => q.ID == order.EmployeeID) == null))
-            {
-                return Json(new
-                {
-                    status = new
-                    {
-                        success = false,
-                        status = ConstantManager.STATUS_SUCCESS,
-                        message = ConstantManager.MES_CHECK_EMPLOYEE_FAIL
-                    },
-                    data = new { }
-                });
-            }
+            order.EmployeeID = null;
             //Check order details
             if (order.OrderDetails == null || order.OrderDetails.Count() == 0)
             {
@@ -336,38 +331,106 @@ namespace SWD.Api.Controllers
                 });
             }
             //Calculate order
-            double totalAmount = 0;
+            decimal totalAmount = 0;
             foreach (var orderdetail in order.OrderDetails)
             {
-                //Check Order detail ProductId not null
-                if (orderdetail.ProductID == null){
+                //Check Order detail ProductId not null and product exist
+                if (orderdetail.ProductID == null)
+                {
                     return Json(new
                     {
                         status = new
                         {
                             success = false,
                             status = ConstantManager.STATUS_SUCCESS,
-                            message = ConstantManager.MES_CHECK_ORDER_DETAIL_FAIL
+                            message = ConstantManager.MES_CHECK_PRODUCT_FAIL
                         },
                         data = new { }
                     });
                 }
-                //Check product exist and is not a parent product
+                //Check product exist
                 var product = productApi.GetActive().Where(q => q.ID == orderdetail.ProductID).FirstOrDefault();
-                if (product == null || product.ParentProductId == null)
+                if (product == null)
                 {
+                    return Json(new
+                    {
+                        status = new
+                        {
+                            success = false,
+                            status = ConstantManager.STATUS_SUCCESS,
+                            message = ConstantManager.MES_CHECK_PRODUCT_FAIL
+                        },
+                        data = new { }
+                    });
                 }
+                //Check Order detail Quantity
+                if (orderdetail.Quantity == null || orderdetail.Quantity < 1)
+                {
+                    return Json(new
+                    {
+                        status = new
+                        {
+                            success = false,
+                            status = ConstantManager.STATUS_SUCCESS,
+                            message = ConstantManager.MES_CHECK_QUANTITY_FAIL
+                        },
+                        data = new { }
+                    });
+                }
+                //Set OrderDetail
+                orderdetail.Price = product.Price;
+                orderdetail.Amount = product.Price * orderdetail.Quantity;
+                //Calculate total amount
+                totalAmount += orderdetail.Amount;
+            }
+            //Create payment
+            List<PaymentViewModel> listPayment = new List<PaymentViewModel>();
+            PaymentViewModel payment = new PaymentViewModel();
+            payment.Amount = totalAmount;
+            payment.Type = (int)PaymentTypeEnum.Cash;
+            listPayment.Add(payment);
+            //Create Order
+            order.CheckInDate = DateTime.Now;
+            order.TotalAmount = totalAmount;
+            order.Payments = listPayment;
+            order.InvoiceID = generateInvoiceID();
+            order.Status = (int)OrderStatusEnum.Finish;
+            var rs = orderApi.CreateOrder(order);
+            if (rs == false)
+            {
+                return Json(new
+                {
+                    status = new
+                    {
+                        success = false,
+                        status = ConstantManager.STATUS_SUCCESS,
+                        message = ConstantManager.MES_CREATE_ORDER_FAIL
+                    },
+                    data = new { }
+                });
             }
             return Json(new
             {
                 status = new
                 {
-                    success = false,
+                    success = true,
                     status = ConstantManager.STATUS_SUCCESS,
-                    message = ConstantManager.MES_CHECK_ORDER_DETAIL_FAIL
+                    message = ConstantManager.MES_CREATE_ORDER_SUCCESS
                 },
-                data = new { }
+                data = new
+                {
+                    data = new
+                    {
+                        InvoiceID = order.InvoiceID,
+                        Status = order.Status
+                    }
+                }
             });
+        }
+
+        private static string generateInvoiceID()
+        {
+            return ConstantManager.INVOICEID_PREFIX + DateTime.Now.Ticks.ToString();
         }
     }
 }

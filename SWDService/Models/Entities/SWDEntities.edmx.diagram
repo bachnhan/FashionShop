@@ -16,6 +16,11 @@
         <EntityTypeShape EntityType="HmsEntities.ProductImage" Width="1.5" PointX="5" PointY="5.75" />
         <EntityTypeShape EntityType="HmsEntities.Product" Width="1.5" PointX="3.125" PointY="5.75" />
         <AssociationConnector Association="HmsEntities.FK_ProductImage_Product" />
+        <EntityTypeShape EntityType="HmsEntities.Order" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="HmsEntities.Payment" Width="1.5" PointX="8.25" PointY="1.5" />
+        <AssociationConnector Association="HmsEntities.FK_Orders_Customer" />
+        <AssociationConnector Association="HmsEntities.FK_Orders_Employee" />
+        <AssociationConnector Association="HmsEntities.FK_Payment_Orders" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

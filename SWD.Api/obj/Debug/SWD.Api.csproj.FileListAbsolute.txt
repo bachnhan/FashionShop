@@ -86,3 +86,4 @@ C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\Microsoft.AspNet.TelemetryCorrel
 C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\Autofac.Integration.Mvc.dll

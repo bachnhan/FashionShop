@@ -65,24 +65,32 @@
     <Property Name="ProductID" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="int" Nullable="false" />
     <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Size" Type="nvarchar" MaxLength="50" />
+    <Property Name="Color" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="EmployeeID" Type="int" Nullable="false" />
-    <Property Name="PaymentID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" />
     <Property Name="CustomerID" Type="int" Nullable="false" />
-    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="CheckInDate" Type="datetime" Nullable="false" />
     <Property Name="StoreID" Type="int" Nullable="false" />
     <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="DeliveryAddress" Type="nvarchar" MaxLength="250" />
+    <Property Name="ReceiverName" Type="nvarchar" MaxLength="250" />
+    <Property Name="ReceiverPhone" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Payment">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ToOrderID" Type="int" Nullable="false" />
     <Property Name="Type" Type="int" Nullable="false" />
     <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="Status" Type="int" Nullable="false" />
@@ -272,7 +280,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orders_Employee">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
@@ -280,18 +288,6 @@
       </Principal>
       <Dependent Role="Orders">
         <PropertyRef Name="EmployeeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_Payment">
-    <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
-    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Payment">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="PaymentID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -304,6 +300,18 @@
       </Principal>
       <Dependent Role="Orders">
         <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Orders">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="ToOrderID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -459,13 +467,13 @@
       <End Role="Employee" EntitySet="Employee" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_Payment" Association="Self.FK_Orders_Payment">
-      <End Role="Payment" EntitySet="Payment" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
     <AssociationSet Name="FK_Orders_Store" Association="Self.FK_Orders_Store">
       <End Role="Store" EntitySet="Store" />
       <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Orders" Association="Self.FK_Payment_Orders">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="Payment" EntitySet="Payment" />
     </AssociationSet>
     <AssociationSet Name="FK_Product_ProductCategory" Association="Self.FK_Product_ProductCategory">
       <End Role="ProductCategory" EntitySet="ProductCategory" />
