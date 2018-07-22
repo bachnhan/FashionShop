@@ -7,6 +7,8 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/sweetalert2.min.css">
+
 <style>
     .btn span.glyphicon {
         opacity: 0;
@@ -20,7 +22,7 @@
     <div class="row">
         <div class="col-xs-12">
             <h2>Product</h2>
-            <button class="btn btn-default" data-target="#addProductModal" data-toggle="modal" style="margin-bottom:10px">
+            <button class="btn btn-success" data-target="#addProductModal" data-toggle="modal" style="margin-bottom:10px">
                 <i class="fa fa-plus"></i>
                 Add new product
             </button>
@@ -54,24 +56,24 @@
                             <form>
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input class="form-control" type="text" id="name" />
+                                    <input class="form-control" type="text" id="productName" />
                                 </div>
                                 <div class="form-group">
                                     <label>Size</label><br />
                                     <div class="checkbox-inline">
-                                        <input type="checkbox" id="sizeX" name="size" />
+                                        <input type="checkbox" id="X" name="size" value="X" />
                                         <label>X</label>
                                     </div>
                                     <div class="checkbox-inline">
-                                        <input type="checkbox" id="sizeM" name="size" />
+                                        <input type="checkbox" id="M" name="size" value="M" />
                                         <label>M</label>
                                     </div>
                                     <div class="checkbox-inline">
-                                        <input type="checkbox" id="sizeL" name="size" />
+                                        <input type="checkbox" id="L" name="size" value="L" />
                                         <label>L</label>
                                     </div>
                                     <div class="checkbox-inline">
-                                        <input type="checkbox" id="sizeXL" name="size" />
+                                        <input type="checkbox" id="XL" name="size" value="XL" />
                                         <label>XL</label>
                                     </div>
                                 </div>
@@ -79,23 +81,23 @@
                                     <label>Color</label><br />
                                     <div class="btn-group" data-toggle="buttons">
                                         <label class="btn btn-success">
-                                            <input type="checkbox" id="green" name="color" autocomplete="off">
+                                            <input type="checkbox" id="green" name="color" value="Green" autocomplete="off">
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="checkbox" id="blue" name="color" autocomplete="off">
+                                            <input type="checkbox" id="blue" name="color" value="Blue" autocomplete="off">
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="checkbox" id="white" name="color" autocomplete="off">
+                                            <input type="checkbox" id="white" name="color" value="White" autocomplete="off">
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                         <label class="btn btn-warning">
-                                            <input type="checkbox" id="orange" name="color" autocomplete="off">
+                                            <input type="checkbox" id="orange" name="color" value="Orange" autocomplete="off">
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                         <label class="btn btn-danger">
-                                            <input type="checkbox" id="red" name="color" autocomplete="off">
+                                            <input type="checkbox" id="red" name="color" value="Red" autocomplete="off">
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                     </div>
@@ -109,7 +111,7 @@
                                     <select id="category" class="form-control"></select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Supplier</label><br/>
+                                    <label>Supplier</label><br />
                                     <select id="supplier" class="form-control"></select>
                                 </div>
                                 <div class="form-group">
@@ -119,7 +121,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary">Add</button>
+                            <button type="button" value="submit" id="btnAddProduct" class="btn btn-primary">Add</button>
                             <button class="btn btn-primary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
@@ -133,19 +135,46 @@
 @section scripts{
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Scripts/sweetalert2.all.min.js"></script>
+
     <script>
         $(document).ready(function () {
+            var table;
             InitDataTable();
             getAllCategories();
             getAllSuppliers();
-
+            $("#btnAddProduct").click(function () {
+                addNewProduct();
+            });
             function InitDataTable() {
-                $.ajax({
+                table = $("#productTable").DataTable({
+                    "ajax": {
+                        "type": "GET",
+                        "url": "@Url.Action("GetAllProducts", "Product")"
+                    },
+                    columns: [
+                        //{ data: 'ID' },
+                        { data: "Name" },
+                        { data: "Size" },
+                        { data: "Color" },
+                        { data: "Description" },
+                        { data: "ProductCategory.Name" },
+                        { data: "Supplier.Name" },
+                        { data: "Price" },
+                        //{ data: "ParentProductId" },
+                        //{ data: "Active" }
+                    ],
+                });
+
+
+
+                @*$.ajax({
                     url: "@Url.Action("GetAllProducts", "Product")",
                     method: "get",
                     dataType: "json",
+                    dataSrc: "",
                     success: function (data) {
-                        $("#productTable").dataTable({
+                        table = $("#productTable").dataTable({
                             data: data.data,
                             columns: [
                                 //{ data: 'ID' },
@@ -161,7 +190,7 @@
                             ],
                         });
                     }
-                });
+                });*@
             }
 
             function getAllCategories() {
@@ -190,6 +219,58 @@
                         }
                     }
                 });
+            }
+
+            function addNewProduct() {
+                var size = [];
+                $("input[name='size']:checked").each(function () {
+                    size.push($(this).attr("value"));
+                });
+                var color = [];
+                $("input[name='color']:checked").each(function () {
+                    color.push($(this).attr("value"));
+                });
+                $.ajax({
+                    url: "@Url.Action("AddNewProduct", "Product")",
+                    method: "post",
+                    dataType: "json",
+                    data: {
+                        'name': $("#productName").val(),
+                        'sizeList': size,
+                        'colorList': color,
+                        'description': $("#description").val(),
+                        'categoryID': $("#category").val(),
+                        'supplierID': $("#supplier").val(),
+                        'price': $("#price").val(),
+                    },
+                    success: function (data) {
+                        if (data.success) {
+                            swal({
+                                type: 'success',
+                                title: 'success!',
+                                //text: 'Something went wrong!',
+                            });
+                            $("#addProductModal").modal('hide');
+                            //refreshTable("productTable");
+                            table.ajax.reload(null, false);
+                            //$('#productTable').DataTable().ajax.reload();
+                            //table.clear();
+                            //refreshTable();
+                            //table.ajax.reload();
+                        }
+                    },
+                    error: function (data) {
+                        swal({
+                            type: 'error',
+                            title: 'error!',
+                            //text: 'Something went wrong!',
+                        });
+                    }
+                });
+            }
+
+            function refreshTable(id) {
+                $(`#${id}`).fnReloadAjax();
             }
         });
     </script>

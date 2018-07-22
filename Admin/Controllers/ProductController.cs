@@ -7,6 +7,7 @@ using HmsService.Models;
 using HmsService.ViewModels;
 using HmsService.Sdk;
 using HmsService.Models.Entities;
+using System.Text;
 
 namespace Admin.Controllers
 {
@@ -25,9 +26,39 @@ namespace Admin.Controllers
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult AddNewProduct(string name, string size, string color, string description, string category, string supplier, double price)
+        public ActionResult AddNewProduct(string name, string[] sizeList, string[] colorList, string description, int categoryID, int supplierID, decimal price)
         {
-            return View();
+            StringBuilder size = new StringBuilder();
+            StringBuilder color = new StringBuilder();
+
+            for(int i = 0; i < sizeList.Length; i++)
+            {             
+                size.Append(sizeList[i]);
+                if (i < sizeList.Length - 1)
+                    size.Append(",");
+            }
+
+            for (int i = 0; i < colorList.Length; i++)
+            {
+                color.Append(colorList[i]);
+                if (i < colorList.Length - 1)
+                    color.Append(",");
+            }
+
+            ProductViewModel newProduct = new ProductViewModel()
+            {
+                Name = name,
+                Size = size.ToString(),
+                Color = color.ToString(),
+                Description = description,
+                CategoryID = categoryID,
+                SupplierId = supplierID,
+                Price = price,
+                Active = true,
+            };
+            ProductApi productApi = new ProductApi();
+            productApi.Create(newProduct);
+            return Json(new { success = true, message = "Successfully added!" },JsonRequestBehavior.AllowGet);
         }
     }
 }
