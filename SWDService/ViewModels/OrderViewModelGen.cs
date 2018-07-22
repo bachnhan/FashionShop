@@ -16,12 +16,16 @@ namespace HmsService.ViewModels
     {
     	
     			public virtual int ID { get; set; }
-    			public virtual int EmployeeID { get; set; }
-    			public virtual int PaymentID { get; set; }
+    			public virtual string InvoiceID { get; set; }
+    			public virtual Nullable<int> EmployeeID { get; set; }
     			public virtual int CustomerID { get; set; }
-    			public virtual System.DateTime Date { get; set; }
+    			public virtual System.DateTime CheckInDate { get; set; }
     			public virtual int StoreID { get; set; }
     			public virtual int Status { get; set; }
+    			public virtual decimal TotalAmount { get; set; }
+    			public virtual string DeliveryAddress { get; set; }
+    			public virtual string ReceiverName { get; set; }
+    			public virtual string ReceiverPhone { get; set; }
     	
     	public OrderViewModel() : base() { }
     	public OrderViewModel(HmsService.Models.Entities.Order entity) : base(entity) { }

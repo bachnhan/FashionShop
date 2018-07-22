@@ -8,14 +8,28 @@
         <EntityTypeShape EntityType="HmsEntities.GroupMembershipCard" Width="1.5" PointX="3" PointY="108.375" />
         <AssociationConnector Association="HmsEntities.FK_GroupMembershipCard_Brand" />
         <AssociationConnector Association="HmsEntities.FK_MembershipCard_GroupMembershipCard" />
-        <EntityTypeShape EntityType="HmsEntities.Account" Width="1.5" PointX="3" PointY="1.375" />
-        <EntityTypeShape EntityType="HmsEntities.Customer" Width="1.5" PointX="0.75" PointY="5.125" />
-        <EntityTypeShape EntityType="HmsEntities.Employee" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="HmsEntities.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HmsEntities.Account" Width="1.5" PointX="3" PointY="7.5" />
+        <EntityTypeShape EntityType="HmsEntities.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="HmsEntities.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="HmsEntities.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="HmsEntities.AspNetUser" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="HmsEntities.Customer" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="HmsEntities.Employee" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="HmsEntities.Product" Width="1.5" PointX="5.75" PointY="7" />
+        <EntityTypeShape EntityType="HmsEntities.ProductImage" Width="1.5" PointX="8" PointY="8.25" />
         <AssociationConnector Association="HmsEntities.FK_Account_Customer" />
         <AssociationConnector Association="HmsEntities.FK_Account_Employee" />
-        <EntityTypeShape EntityType="HmsEntities.ProductImage" Width="1.5" PointX="5" PointY="5.75" />
-        <EntityTypeShape EntityType="HmsEntities.Product" Width="1.5" PointX="3.125" PointY="5.75" />
+        <AssociationConnector Association="HmsEntities.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="HmsEntities.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="HmsEntities.FK_ProductImage_Product" />
+        <AssociationConnector Association="HmsEntities.AspNetUserRoles" />
+        <EntityTypeShape EntityType="HmsEntities.sysdiagram" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="HmsEntities.Order" Width="1.5" PointX="3" PointY="10.5" />
+        <AssociationConnector Association="HmsEntities.FK_Orders_Customer" />
+        <AssociationConnector Association="HmsEntities.FK_Orders_Employee" />
+        <EntityTypeShape EntityType="HmsEntities.InventoryCheckingDetail" Width="1.5" PointX="10.875" PointY="11.375" />
+        <AssociationConnector Association="HmsEntities.FK_InventoryCheckingDetail_Product" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

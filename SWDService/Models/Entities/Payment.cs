@@ -14,18 +14,12 @@ namespace HmsService.Models.Entities
     
     public partial class Payment
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Payment()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-    
         public int ID { get; set; }
         public int Type { get; set; }
         public decimal Amount { get; set; }
         public int Status { get; set; }
+        public int ToOrderID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

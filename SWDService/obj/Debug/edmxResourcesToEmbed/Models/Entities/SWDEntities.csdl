@@ -34,7 +34,6 @@
     <EntitySet Name="InventoryCheckings" EntityType="HmsEntities.InventoryChecking" />
     <EntitySet Name="InventoryCheckingDetails" EntityType="HmsEntities.InventoryCheckingDetail" />
     <EntitySet Name="OrderDetails" EntityType="HmsEntities.OrderDetail" />
-    <EntitySet Name="Orders" EntityType="HmsEntities.Order" />
     <EntitySet Name="Payments" EntityType="HmsEntities.Payment" />
     <EntitySet Name="ProductCategories" EntityType="HmsEntities.ProductCategory" />
     <EntitySet Name="Stores" EntityType="HmsEntities.Store" />
@@ -48,18 +47,6 @@
     <AssociationSet Name="FK_InventoryCheckingDetail_InventoryChecking" Association="HmsEntities.FK_InventoryCheckingDetail_InventoryChecking">
       <End Role="InventoryChecking" EntitySet="InventoryCheckings" />
       <End Role="InventoryCheckingDetail" EntitySet="InventoryCheckingDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderDetail_Orders" Association="HmsEntities.FK_OrderDetail_Orders">
-      <End Role="Order" EntitySet="Orders" />
-      <End Role="OrderDetail" EntitySet="OrderDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_Payment" Association="HmsEntities.FK_Orders_Payment">
-      <End Role="Payment" EntitySet="Payments" />
-      <End Role="Order" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_Store" Association="HmsEntities.FK_Orders_Store">
-      <End Role="Store" EntitySet="Stores" />
-      <End Role="Order" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK_TransportOrder_Store" Association="HmsEntities.FK_TransportOrder_Store">
       <End Role="Store" EntitySet="Stores" />
@@ -77,9 +64,16 @@
       <End Role="TransportOrder" EntitySet="TransportOrders" />
       <End Role="TransportOrderDetail" EntitySet="TransportOrderDetails" />
     </AssociationSet>
+    <EntitySet Name="C__MigrationHistory" EntityType="HmsEntities.C__MigrationHistory" />
     <EntitySet Name="Accounts" EntityType="HmsEntities.Account" />
+    <EntitySet Name="AspNetRoles" EntityType="HmsEntities.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="HmsEntities.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="HmsEntities.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="HmsEntities.AspNetUser" />
     <EntitySet Name="Customers" EntityType="HmsEntities.Customer" />
     <EntitySet Name="Employees" EntityType="HmsEntities.Employee" />
+    <EntitySet Name="Products" EntityType="HmsEntities.Product" />
+    <EntitySet Name="ProductImages" EntityType="HmsEntities.ProductImage" />
     <AssociationSet Name="FK_Account_Customer" Association="HmsEntities.FK_Account_Customer">
       <End Role="Customer" EntitySet="Customers" />
       <End Role="Account" EntitySet="Accounts" />
@@ -88,20 +82,18 @@
       <End Role="Employee" EntitySet="Employees" />
       <End Role="Account" EntitySet="Accounts" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_Customer" Association="HmsEntities.FK_Orders_Customer">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="Order" EntitySet="Orders" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="HmsEntities.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="HmsEntities.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
     </AssociationSet>
     <AssociationSet Name="FK_Employee_Store" Association="HmsEntities.FK_Employee_Store">
       <End Role="Store" EntitySet="Stores" />
       <End Role="Employee" EntitySet="Employees" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_Employee" Association="HmsEntities.FK_Orders_Employee">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="Order" EntitySet="Orders" />
-    </AssociationSet>
-    <EntitySet Name="ProductImages" EntityType="HmsEntities.ProductImage" />
-    <EntitySet Name="Products" EntityType="HmsEntities.Product" />
     <AssociationSet Name="FK_InventoryCheckingDetail_Product" Association="HmsEntities.FK_InventoryCheckingDetail_Product">
       <End Role="Product" EntitySet="Products" />
       <End Role="InventoryCheckingDetail" EntitySet="InventoryCheckingDetails" />
@@ -125,6 +117,32 @@
     <AssociationSet Name="FK_TransportOrderDetail_Product" Association="HmsEntities.FK_TransportOrderDetail_Product">
       <End Role="Product" EntitySet="Products" />
       <End Role="TransportOrderDetail" EntitySet="TransportOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="HmsEntities.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="HmsEntities.sysdiagram" />
+    <EntitySet Name="Orders" EntityType="HmsEntities.Order" />
+    <AssociationSet Name="FK_Orders_Customer" Association="HmsEntities.FK_Orders_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Employee" Association="HmsEntities.FK_Orders_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Orders" Association="HmsEntities.FK_OrderDetail_Orders">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Store" Association="HmsEntities.FK_Orders_Store">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Orders" Association="HmsEntities.FK_Payment_Orders">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Payment" EntitySet="Payments" />
     </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -172,25 +190,11 @@
     <Property Name="ProductID" Type="Int32" Nullable="false" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
     <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-    <NavigationProperty Name="Order" Relationship="HmsEntities.FK_OrderDetail_Orders" FromRole="OrderDetail" ToRole="Order" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Product" Relationship="HmsEntities.FK_OrderDetail_Product" FromRole="OrderDetail" ToRole="Product" />
-  </EntityType>
-  <EntityType Name="Order">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-    <Property Name="PaymentID" Type="Int32" Nullable="false" />
-    <Property Name="CustomerID" Type="Int32" Nullable="false" />
-    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="StoreID" Type="Int32" Nullable="false" />
-    <Property Name="Status" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="OrderDetails" Relationship="HmsEntities.FK_OrderDetail_Orders" FromRole="Order" ToRole="OrderDetail" />
-    <NavigationProperty Name="Payment" Relationship="HmsEntities.FK_Orders_Payment" FromRole="Order" ToRole="Payment" />
-    <NavigationProperty Name="Store" Relationship="HmsEntities.FK_Orders_Store" FromRole="Order" ToRole="Store" />
-    <NavigationProperty Name="Customer" Relationship="HmsEntities.FK_Orders_Customer" FromRole="Order" ToRole="Customer" />
-    <NavigationProperty Name="Employee" Relationship="HmsEntities.FK_Orders_Employee" FromRole="Order" ToRole="Employee" />
+    <NavigationProperty Name="Order" Relationship="HmsEntities.FK_OrderDetail_Orders" FromRole="OrderDetail" ToRole="Order" />
   </EntityType>
   <EntityType Name="Payment">
     <Key>
@@ -200,7 +204,8 @@
     <Property Name="Type" Type="Int32" Nullable="false" />
     <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="Status" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Payment" FromRole="Payment" ToRole="Order" />
+    <Property Name="ToOrderID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="HmsEntities.FK_Payment_Orders" FromRole="Payment" ToRole="Order" />
   </EntityType>
   <EntityType Name="ProductCategory">
     <Key>
@@ -219,12 +224,12 @@
     <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="Status" Type="Int32" Nullable="false" />
     <NavigationProperty Name="InventoryCheckings" Relationship="HmsEntities.FK_Inventory_Store" FromRole="Store" ToRole="InventoryChecking" />
-    <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Store" FromRole="Store" ToRole="Order" />
     <NavigationProperty Name="TransportOrders" Relationship="HmsEntities.FK_TransportOrder_Store" FromRole="Store" ToRole="TransportOrder" />
     <NavigationProperty Name="TransportOrders1" Relationship="HmsEntities.FK_TransportOrder_Store1" FromRole="Store" ToRole="TransportOrder" />
     <Property Name="lat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="lon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Employees" Relationship="HmsEntities.FK_Employee_Store" FromRole="Store" ToRole="Employee" />
+    <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Store" FromRole="Store" ToRole="Order" />
   </EntityType>
   <EntityType Name="Supplier">
     <Key>
@@ -292,42 +297,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_OrderDetail_Orders">
-    <End Type="HmsEntities.Order" Role="Order" Multiplicity="1" />
-    <End Type="HmsEntities.OrderDetail" Role="OrderDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Order">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="OrderDetail">
-        <PropertyRef Name="OrderID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_Payment">
-    <End Type="HmsEntities.Payment" Role="Payment" Multiplicity="1" />
-    <End Type="HmsEntities.Order" Role="Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Payment">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="PaymentID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_Store">
-    <End Type="HmsEntities.Store" Role="Store" Multiplicity="1" />
-    <End Type="HmsEntities.Order" Role="Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Store">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="StoreID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_TransportOrder_Store">
     <End Type="HmsEntities.Store" Role="Store" Multiplicity="0..1" />
     <End Type="HmsEntities.TransportOrder" Role="TransportOrder" Multiplicity="*" />
@@ -376,6 +345,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="Account">
     <Key>
       <PropertyRef Name="Username" />
@@ -386,6 +365,55 @@
     <Property Name="EmployeeID" Type="Int32" />
     <NavigationProperty Name="Customer" Relationship="HmsEntities.FK_Account_Customer" FromRole="Account" ToRole="Customer" />
     <NavigationProperty Name="Employee" Relationship="HmsEntities.FK_Account_Employee" FromRole="Account" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="HmsEntities.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="HmsEntities.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="HmsEntities.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="HmsEntities.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="HmsEntities.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="AspNetRoles" Relationship="HmsEntities.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -398,9 +426,9 @@
     <Property Name="fbEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="Gender" Type="Boolean" />
     <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Accounts" Relationship="HmsEntities.FK_Account_Customer" FromRole="Customer" ToRole="Account" />
     <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Customer" FromRole="Customer" ToRole="Order" />
-    <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -413,10 +441,42 @@
     <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
     <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Accounts" Relationship="HmsEntities.FK_Account_Employee" FromRole="Employee" ToRole="Account" />
     <NavigationProperty Name="Store" Relationship="HmsEntities.FK_Employee_Store" FromRole="Employee" ToRole="Store" />
     <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Employee" FromRole="Employee" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Size" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Color" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="SupplierId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ParentProductId" Type="Int32" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="PicUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="InventoryCheckingDetails" Relationship="HmsEntities.FK_InventoryCheckingDetail_Product" FromRole="Product" ToRole="InventoryCheckingDetail" />
+    <NavigationProperty Name="OrderDetails" Relationship="HmsEntities.FK_OrderDetail_Product" FromRole="Product" ToRole="OrderDetail" />
+    <NavigationProperty Name="ProductCategory" Relationship="HmsEntities.FK_Product_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
+    <NavigationProperty Name="Supplier" Relationship="HmsEntities.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
+    <NavigationProperty Name="ProductImages" Relationship="HmsEntities.FK_ProductImage_Product" FromRole="Product" ToRole="ProductImage" />
+    <NavigationProperty Name="TransportOrderDetails" Relationship="HmsEntities.FK_TransportOrderDetail_Product" FromRole="Product" ToRole="TransportOrderDetail" />
+  </EntityType>
+  <EntityType Name="ProductImage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="PicUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="HmsEntities.FK_ProductImage_Product" FromRole="ProductImage" ToRole="Product" />
   </EntityType>
   <Association Name="FK_Account_Customer">
     <End Type="HmsEntities.Customer" Role="Customer" Multiplicity="0..1" />
@@ -442,15 +502,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_Customer">
-    <End Type="HmsEntities.Customer" Role="Customer" Multiplicity="1" />
-    <End Type="HmsEntities.Order" Role="Order" Multiplicity="*" />
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="HmsEntities.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="HmsEntities.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="ID" />
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="CustomerID" />
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="HmsEntities.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="HmsEntities.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -466,49 +542,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_Employee">
-    <End Type="HmsEntities.Employee" Role="Employee" Multiplicity="1" />
-    <End Type="HmsEntities.Order" Role="Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="EmployeeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="ProductImage">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductId" Type="Int32" />
-    <Property Name="PicUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="DisplayOrder" Type="Int32" />
-    <NavigationProperty Name="Product" Relationship="HmsEntities.FK_ProductImage_Product" FromRole="ProductImage" ToRole="Product" />
-  </EntityType>
-  <EntityType Name="Product">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="Size" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="Color" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="CategoryID" Type="Int32" Nullable="false" />
-    <Property Name="SupplierId" Type="Int32" Nullable="false" />
-    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="ParentProductId" Type="Int32" />
-    <NavigationProperty Name="InventoryCheckingDetails" Relationship="HmsEntities.FK_InventoryCheckingDetail_Product" FromRole="Product" ToRole="InventoryCheckingDetail" />
-    <NavigationProperty Name="OrderDetails" Relationship="HmsEntities.FK_OrderDetail_Product" FromRole="Product" ToRole="OrderDetail" />
-    <NavigationProperty Name="ProductCategory" Relationship="HmsEntities.FK_Product_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
-    <NavigationProperty Name="Supplier" Relationship="HmsEntities.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
-    <NavigationProperty Name="ProductImages" Relationship="HmsEntities.FK_ProductImage_Product" FromRole="Product" ToRole="ProductImage" />
-    <NavigationProperty Name="TransportOrderDetails" Relationship="HmsEntities.FK_TransportOrderDetail_Product" FromRole="Product" ToRole="TransportOrderDetail" />
-    <Property Name="Active" Type="Boolean" Nullable="false" />
-  </EntityType>
   <Association Name="FK_InventoryCheckingDetail_Product">
     <End Type="HmsEntities.Product" Role="Product" Multiplicity="1" />
     <End Type="HmsEntities.InventoryCheckingDetail" Role="InventoryCheckingDetail" Multiplicity="*" />
@@ -578,6 +611,101 @@
       </Principal>
       <Dependent Role="TransportOrderDetail">
         <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="HmsEntities.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="HmsEntities.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InvoiceID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeID" Type="Int32" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="CheckInDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="TotalAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="DeliveryAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customer" Relationship="HmsEntities.FK_Orders_Customer" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="Employee" Relationship="HmsEntities.FK_Orders_Employee" FromRole="Order" ToRole="Employee" />
+    <NavigationProperty Name="OrderDetails" Relationship="HmsEntities.FK_OrderDetail_Orders" FromRole="Order" ToRole="OrderDetail" />
+    <NavigationProperty Name="Store" Relationship="HmsEntities.FK_Orders_Store" FromRole="Order" ToRole="Store" />
+    <NavigationProperty Name="Payments" Relationship="HmsEntities.FK_Payment_Orders" FromRole="Order" ToRole="Payment" />
+  </EntityType>
+  <Association Name="FK_Orders_Customer">
+    <End Type="HmsEntities.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="HmsEntities.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Employee">
+    <End Type="HmsEntities.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="HmsEntities.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Orders">
+    <End Type="HmsEntities.Order" Role="Order" Multiplicity="1" />
+    <End Type="HmsEntities.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Store">
+    <End Type="HmsEntities.Store" Role="Store" Multiplicity="1" />
+    <End Type="HmsEntities.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Orders">
+    <End Type="HmsEntities.Order" Role="Order" Multiplicity="1" />
+    <End Type="HmsEntities.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="ToOrderID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

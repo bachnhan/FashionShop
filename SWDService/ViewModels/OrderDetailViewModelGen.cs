@@ -19,6 +19,9 @@ namespace HmsService.ViewModels
     			public virtual int ProductID { get; set; }
     			public virtual int Quantity { get; set; }
     			public virtual decimal Amount { get; set; }
+    			public virtual decimal Price { get; set; }
+    			public virtual string Size { get; set; }
+    			public virtual string Color { get; set; }
     	
     	public OrderDetailViewModel() : base() { }
     	public OrderDetailViewModel(HmsService.Models.Entities.OrderDetail entity) : base(entity) { }

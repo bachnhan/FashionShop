@@ -57,6 +57,10 @@ namespace FashionShopAdmin.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if(User.Identity.IsAuthenticated)
+            {
+                return Redirect("/Product/Index");
+            }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -392,7 +396,7 @@ namespace FashionShopAdmin.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //
