@@ -25,7 +25,6 @@ namespace HmsService.ViewModels
     			public virtual decimal Price { get; set; }
     			public virtual Nullable<int> ParentProductId { get; set; }
     			public virtual bool Active { get; set; }
-    			public virtual string PicUrl { get; set; }
     	
     	public ProductViewModel() : base() { }
     	public ProductViewModel(HmsService.Models.Entities.Product entity) : base(entity) { }

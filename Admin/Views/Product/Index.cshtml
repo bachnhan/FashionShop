@@ -38,6 +38,7 @@
                         <th>Category</th>
                         <th>Supplier</th>
                         <th>Price</th>
+                        <th>Update</th>
                         @*<th>Parent Product</th>
                             <th>Active</th>*@
                     </tr>
@@ -120,12 +121,101 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Image</label>
-                                    <input type="file" class="upload" runat="server" id="image" accept="image/png, image/jpeg" />
+                                    <input type="file" class="upload" runat="server" id="image" accept="image/png, image/jpeg" multiple="multiple" />
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" value="submit" id="btnAddProduct" class="btn btn-primary">Add</button>
+                            <button class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @* ------UPDATE PRODUCT MODAL---------- *@
+            <div class="modal" id="editProductModal" tabindex="-1">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Edit product</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" enctype="multipart/form-data" id="EditProductForm">
+                                <input class="form-control" type="hidden" id="productId" />
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input class="form-control" type="text" id="productName2" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Size</label><br />
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" id="X" name="size2" value="X" />
+                                        <label>X</label>
+                                    </div>
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" id="M" name="size2" value="M" />
+                                        <label>M</label>
+                                    </div>
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" id="L" name="size2" value="L" />
+                                        <label>L</label>
+                                    </div>
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" id="XL" name="size2" value="XL" />
+                                        <label>XL</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Color</label><br />
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-success">
+                                            <input type="checkbox" id="green" name="color2" value="Green" autocomplete="off">
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" id="blue" name="color2" value="Blue" autocomplete="off">
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                        </label>
+                                        <label class="btn btn-default">
+                                            <input type="checkbox" id="white" name="color2" value="White" autocomplete="off">
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                        </label>
+                                        <label class="btn btn-warning">
+                                            <input type="checkbox" id="orange" name="color2" value="Orange" autocomplete="off">
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                        </label>
+                                        <label class="btn btn-danger">
+                                            <input type="checkbox" id="red" name="color2" value="Red" autocomplete="off">
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input class="form-control" type="text" id="description2" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Category</label><br />
+                                    <select id="category2" class="form-control"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Supplier</label><br />
+                                    <select id="supplier2" class="form-control"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input class="form-control" type="text" id="price2" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Image</label>
+                                    <input type="file" class="upload" runat="server" id="image" accept="image/png, image/jpeg" multiple="multiple" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" value="submit" id="btnEditProduct" class="btn btn-primary">Edit</button>
                             <button class="btn btn-primary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
@@ -142,6 +232,39 @@
     <script src="~/Scripts/sweetalert2.all.min.js"></script>
 
     <script>
+        function getAllCategories2() {
+                $.ajax({
+                    url: "@Url.Action("GetAllCategories", "Category")",
+                    method: "get",
+                    dataType: "json",
+                    success: function (data) {
+                        var length = data.length;
+                        for (var i = 0; i < length; i++) {
+                            $("#category2").append('<option value="' + data[i].ID + '">' + data[i].Name + '</option>');
+                        }
+                    }
+                });
+            }
+
+            function getAllSuppliers2() {
+                $.ajax({
+                    url: "@Url.Action("GetAllSupplier", "Supplier")",
+                    method: "get",
+                    dataType: "json",
+                    success: function (data) {
+                        var length = data.length;
+                        for (var i = 0; i < length; i++) {
+                            $("#supplier2").append('<option value="' + data[i].ID + '">' + data[i].Name + '</option>');
+                        }
+                    }
+                });
+        }
+
+        function setProduct(ID) {
+            $("#productId").val(ID);
+            getAllCategories2();
+            getAllSuppliers2();
+        }
         $(document).ready(function () {
             var table;
             InitDataTable();
@@ -149,6 +272,9 @@
             getAllSuppliers();
             $("#btnAddProduct").click(function () {
                 addNewProduct();
+            });
+            $("#btnEditProduct").click(function () {
+                EditProduct();
             });
             function InitDataTable() {
                 table = $("#productTable").DataTable({
@@ -165,36 +291,17 @@
                         { data: "ProductCategory.Name" },
                         { data: "Supplier.Name" },
                         { data: "Price" },
+                        {
+                            data: 'ID',
+                            render: function (data, type, row) {
+                                return '<button class="btn btn-success" data-target="#editProductModal" data-toggle="modal" style="margin-bottom:10px" onclick="setProduct(' + data + ')">Edit</button >';
+                            }
+                        }
                         //{ data: "ParentProductId" },
                         //{ data: "Active" }
                     ],
                 });
 
-
-
-                @*$.ajax({
-                    url: "@Url.Action("GetAllProducts", "Product")",
-                    method: "get",
-                    dataType: "json",
-                    dataSrc: "",
-                    success: function (data) {
-                        table = $("#productTable").dataTable({
-                            data: data.data,
-                            columns: [
-                                //{ data: 'ID' },
-                                { data: "Name" },
-                                { data: "Size" },
-                                { data: "Color" },
-                                { data: "Description" },
-                                { data: "ProductCategory.Name" },
-                                { data: "Supplier.Name" },
-                                { data: "Price" },
-                                //{ data: "ParentProductId" },
-                                //{ data: "Active" }
-                            ],
-                        });
-                    }
-                });*@
             }
 
             function getAllCategories() {
@@ -223,7 +330,7 @@
                         }
                     }
                 });
-            }
+        }
 
             function addNewProduct() {
                 var size = [];
@@ -242,7 +349,10 @@
                 formData.append('categoryID', $("#category").val());
                 formData.append('supplierID', $("#supplier").val());
                 formData.append('price', $("#price").val());
-                formData.append('image', $('#image')[0].files[0]);
+                $.each($("input[type='file']")[0].files, function (i, file) {
+                    formData.append('image', file);
+                });
+                //formData.append('image[]', $('#image')[0].files);
                 $.ajax({
                     url: "@Url.Action("AddNewProduct", "Product")",
                     method: "post",
@@ -257,6 +367,60 @@
                                 //text: 'Something went wrong!',
                             });
                             $("#addProductModal").modal('hide');
+                            //refreshTable("productTable");
+                            table.ajax.reload(null, false);
+                            //$('#productTable').DataTable().ajax.reload();
+                            //table.clear();
+                            //refreshTable();
+                            //table.ajax.reload();
+                        }
+                    },
+                    error: function (data) {
+                        swal({
+                            type: 'error',
+                            title: 'error!',
+                            //text: 'Something went wrong!',
+                        });
+                    }
+                });
+            }
+
+             function EditProduct() {
+                var size = [];
+                $("input[name='size2']:checked").each(function () {
+                    size.push($(this).attr("value"));
+                });
+                var color = [];
+                $("input[name='color2']:checked").each(function () {
+                    color.push($(this).attr("value"));
+                });
+                var formData = new FormData();
+                formData.append('name', $("#productName2").val());
+                formData.append('sizeList', size);
+                formData.append('colorList', color);
+                formData.append('description', $("#description2").val());
+                formData.append('categoryID', $("#category2").val());
+                formData.append('supplierID', $("#supplier2").val());
+                formData.append('price', $("#price2").val());
+                formData.append('ID', $("#productId").val());
+                $.each($("input[type='file']")[0].files, function (i, file) {
+                    formData.append('image', file);
+                });
+                //formData.append('image[]', $('#image')[0].files);
+                $.ajax({
+                    url: "@Url.Action("EditProduct", "Product")",
+                    method: "post",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        if (data.success) {
+                            swal({
+                                type: 'success',
+                                title: 'success!',
+                                //text: 'Something went wrong!',
+                            });
+                            $("#editProductModal").modal('hide');
                             //refreshTable("productTable");
                             table.ajax.reload(null, false);
                             //$('#productTable').DataTable().ajax.reload();
