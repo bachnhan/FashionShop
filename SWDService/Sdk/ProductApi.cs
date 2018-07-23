@@ -10,6 +10,17 @@ namespace HmsService.Sdk
 {
     public partial class ProductApi : HmsService.Sdk.BaseSdkApi<HmsService.Models.Entities.Product, HmsService.ViewModels.ProductViewModel, HmsService.Models.Entities.Services.IProductService>
     {
+        public void CreateProduct(ProductViewModel product)
+        {
+            var entity = product.ToEntity();
+            entity.ProductImages.Clear();
+            foreach (var item in product.ProductImages)
+            {
+                entity.ProductImages.Add(item.ToEntity());
+            }
+            this.BaseService.Create(entity);
+            this.BaseService.Save();
+        }
         public void EditProduct(ProductViewModel product)
         {
             var entity = new Product();

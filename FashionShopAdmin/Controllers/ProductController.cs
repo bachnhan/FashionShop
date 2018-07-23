@@ -90,7 +90,7 @@ namespace Admin.Controllers
                 Active = true,
             };
             ProductApi productApi = new ProductApi();
-            productApi.Create(newProduct);
+            productApi.CreateProduct(newProduct);
             return Json(new { success = true, message = "Successfully added!" }, JsonRequestBehavior.AllowGet);
         }
 
