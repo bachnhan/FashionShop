@@ -148,6 +148,7 @@ namespace Admin.Controllers
             product.Size = size.ToString();
             product.Color = color.ToString();
             product.Description = description;
+            product.ProductCategory = null;
             product.CategoryID = categoryID;
             product.Supplier = null;
             product.SupplierId = supplierID;
