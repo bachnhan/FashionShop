@@ -19,7 +19,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="20" />
           <Property Name="DeliveryAddress" Type="varchar" MaxLength="250" />
           <Property Name="fbEmail" Type="varchar" MaxLength="250" />
@@ -582,12 +582,7 @@
             <End Role="TransportOrderDetail" EntitySet="TransportOrderDetails" />
           </AssociationSet>
           <EntitySet Name="Accounts" EntityType="HmsEntities.Account" />
-          <EntitySet Name="Customers" EntityType="HmsEntities.Customer" />
           <EntitySet Name="Employees" EntityType="HmsEntities.Employee" />
-          <AssociationSet Name="FK_Account_Customer" Association="HmsEntities.FK_Account_Customer">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Account" EntitySet="Accounts" />
-          </AssociationSet>
           <AssociationSet Name="FK_Account_Employee" Association="HmsEntities.FK_Account_Employee">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Account" EntitySet="Accounts" />
@@ -624,10 +619,6 @@
           </AssociationSet>
           <EntitySet Name="Payments" EntityType="HmsEntities.Payment" />
           <EntitySet Name="Orders" EntityType="HmsEntities.Order" />
-          <AssociationSet Name="FK_Orders_Customer" Association="HmsEntities.FK_Orders_Customer">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
           <AssociationSet Name="FK_Orders_Employee" Association="HmsEntities.FK_Orders_Employee">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Order" EntitySet="Orders" />
@@ -643,6 +634,15 @@
           <AssociationSet Name="FK_Payment_Orders" Association="HmsEntities.FK_Payment_Orders">
             <End Role="Order" EntitySet="Orders" />
             <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <EntitySet Name="Customers" EntityType="HmsEntities.Customer" />
+          <AssociationSet Name="FK_Account_Customer" Association="HmsEntities.FK_Account_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customer" Association="HmsEntities.FK_Orders_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -842,24 +842,8 @@
           <Property Name="Password" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="CusomerID" Type="Int32" />
           <Property Name="EmployeeID" Type="Int32" />
-          <NavigationProperty Name="Customer" Relationship="HmsEntities.FK_Account_Customer" FromRole="Account" ToRole="Customer" />
           <NavigationProperty Name="Employee" Relationship="HmsEntities.FK_Account_Employee" FromRole="Account" ToRole="Employee" />
-        </EntityType>
-        <EntityType Name="Customer">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="DeliveryAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="fbEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Gender" Type="Boolean" />
-          <Property Name="Birthday" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Accounts" Relationship="HmsEntities.FK_Account_Customer" FromRole="Customer" ToRole="Account" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="Avatar" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Customer" FromRole="Customer" ToRole="Order" />
+          <NavigationProperty Name="Customer" Relationship="HmsEntities.FK_Account_Customer" FromRole="Account" ToRole="Customer" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -877,18 +861,6 @@
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Employee" FromRole="Employee" ToRole="Order" />
         </EntityType>
-        <Association Name="FK_Account_Customer">
-          <End Type="HmsEntities.Customer" Role="Customer" Multiplicity="0..1" />
-          <End Type="HmsEntities.Account" Role="Account" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Account">
-              <PropertyRef Name="CusomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Account_Employee">
           <End Type="HmsEntities.Employee" Role="Employee" Multiplicity="0..1" />
           <End Type="HmsEntities.Account" Role="Account" Multiplicity="*" />
@@ -1042,24 +1014,12 @@
           <Property Name="DeliveryAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="ReceiverName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="ReceiverPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Customer" Relationship="HmsEntities.FK_Orders_Customer" FromRole="Order" ToRole="Customer" />
           <NavigationProperty Name="Employee" Relationship="HmsEntities.FK_Orders_Employee" FromRole="Order" ToRole="Employee" />
           <NavigationProperty Name="OrderDetails" Relationship="HmsEntities.FK_OrderDetail_Orders" FromRole="Order" ToRole="OrderDetail" />
           <NavigationProperty Name="Store" Relationship="HmsEntities.FK_Orders_Store" FromRole="Order" ToRole="Store" />
           <NavigationProperty Name="Payments" Relationship="HmsEntities.FK_Payment_Orders" FromRole="Order" ToRole="Payment" />
+          <NavigationProperty Name="Customer" Relationship="HmsEntities.FK_Orders_Customer" FromRole="Order" ToRole="Customer" />
         </EntityType>
-        <Association Name="FK_Orders_Customer">
-          <End Type="HmsEntities.Customer" Role="Customer" Multiplicity="1" />
-          <End Type="HmsEntities.Order" Role="Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Orders_Employee">
           <End Type="HmsEntities.Employee" Role="Employee" Multiplicity="0..1" />
           <End Type="HmsEntities.Order" Role="Order" Multiplicity="*" />
@@ -1105,6 +1065,46 @@
             </Principal>
             <Dependent Role="Payment">
               <PropertyRef Name="ToOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="fbEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Avatar" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accounts" Relationship="HmsEntities.FK_Account_Customer" FromRole="Customer" ToRole="Account" />
+          <NavigationProperty Name="Orders" Relationship="HmsEntities.FK_Orders_Customer" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_Account_Customer">
+          <End Type="HmsEntities.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="HmsEntities.Account" Role="Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="CusomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Customer">
+          <End Type="HmsEntities.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="HmsEntities.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1217,21 +1217,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="HmsEntities.Customer">
-              <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="fbEmail" ColumnName="fbEmail" />
-                <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="HmsEntities.Employee">
               <MappingFragment StoreEntitySet="Employee">
@@ -1296,6 +1281,21 @@
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="HmsEntities.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="fbEmail" ColumnName="fbEmail" />
+                <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

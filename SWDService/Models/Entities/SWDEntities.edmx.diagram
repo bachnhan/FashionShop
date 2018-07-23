@@ -9,18 +9,18 @@
         <AssociationConnector Association="HmsEntities.FK_GroupMembershipCard_Brand" />
         <AssociationConnector Association="HmsEntities.FK_MembershipCard_GroupMembershipCard" />
         <EntityTypeShape EntityType="HmsEntities.Account" Width="1.5" PointX="3" PointY="1.375" />
-        <EntityTypeShape EntityType="HmsEntities.Customer" Width="1.5" PointX="0.75" PointY="5.125" />
         <EntityTypeShape EntityType="HmsEntities.Employee" Width="1.5" PointX="0.75" PointY="1" />
-        <AssociationConnector Association="HmsEntities.FK_Account_Customer" />
         <AssociationConnector Association="HmsEntities.FK_Account_Employee" />
         <EntityTypeShape EntityType="HmsEntities.ProductImage" Width="1.5" PointX="5" PointY="5.75" />
         <EntityTypeShape EntityType="HmsEntities.Product" Width="1.5" PointX="3.125" PointY="5.75" />
         <AssociationConnector Association="HmsEntities.FK_ProductImage_Product" />
         <EntityTypeShape EntityType="HmsEntities.Payment" Width="1.5" PointX="8.25" PointY="1.5" />
         <EntityTypeShape EntityType="HmsEntities.Order" Width="1.5" PointX="6" PointY="0.75" />
-        <AssociationConnector Association="HmsEntities.FK_Orders_Customer" />
         <AssociationConnector Association="HmsEntities.FK_Orders_Employee" />
         <AssociationConnector Association="HmsEntities.FK_Payment_Orders" />
+        <EntityTypeShape EntityType="HmsEntities.Customer" Width="1.5" PointX="7.375" PointY="6" />
+        <AssociationConnector Association="HmsEntities.FK_Account_Customer" />
+        <AssociationConnector Association="HmsEntities.FK_Orders_Customer" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

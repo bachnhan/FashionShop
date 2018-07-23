@@ -14,7 +14,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="Phone" Type="varchar" MaxLength="20" />
     <Property Name="DeliveryAddress" Type="varchar" MaxLength="250" />
     <Property Name="fbEmail" Type="varchar" MaxLength="250" />
