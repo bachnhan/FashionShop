@@ -128,7 +128,11 @@
                     columns: [
                         { data: "Customer.Name" },
                         {
-                            data: "CheckInDate"
+                            data: 'CheckInDate',
+                            render: function (data, type, row) {
+                                var date = new Date(parseInt(data.substr(6).replace(")/", ""))).toLocaleDateString();
+                                return date;
+                            },
                         },
                         { data: "Status" },
                         { data: "TotalAmount" },
