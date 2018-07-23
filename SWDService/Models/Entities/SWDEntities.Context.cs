@@ -35,6 +35,7 @@ namespace HmsService.Models.Entities
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<TransportOrder> TransportOrders { get; set; }
         public virtual DbSet<TransportOrderDetail> TransportOrderDetails { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }

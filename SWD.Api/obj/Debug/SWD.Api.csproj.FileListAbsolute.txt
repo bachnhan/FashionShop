@@ -32,6 +32,7 @@ C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\WebGrease.dll
 C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\AutoMapper.dll
 C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\Autofac.dll
 C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\EntityFramework.dll
+C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\Autofac.Integration.Mvc.dll
 C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\SWDService.pdb
 C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\SWDService.dll.config
 C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\Facebook.xml
@@ -146,7 +147,6 @@ C:\Users\Administrator\Documents\FashionShop\SWD.Api\bin\System.Web.WebPages.dll
 C:\Users\Administrator\Documents\FashionShop\SWD.Api\bin\System.Web.WebPages.Razor.dll
 C:\Users\Administrator\Documents\FashionShop\SWD.Api\bin\WebGrease.dll
 C:\Users\Administrator\Documents\FashionShop\SWD.Api\bin\EntityFramework.dll
-C:\Users\Administrator\Documents\FashionShop\SWD.Api\bin\Autofac.Integration.Mvc.dll
 C:\Users\Administrator\Documents\FashionShop\SWD.Api\bin\SWDService.pdb
 C:\Users\Administrator\Documents\FashionShop\SWD.Api\bin\SWDService.dll.config
 C:\Users\Administrator\Documents\FashionShop\SWD.Api\bin\Antlr3.Runtime.pdb

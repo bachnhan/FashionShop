@@ -21,7 +21,7 @@ namespace FashionShopAdmin.Controllers
         public JsonResult GetAllOrders()
         {
             OrderApi orderApi = new OrderApi();
-            List<OrderViewModel> result = orderApi.Get().ToList();
+            List<OrderViewModel> result = orderApi.GetActive().ToList();
             return Json(new { data = result}, JsonRequestBehavior.AllowGet);
         }
     }
