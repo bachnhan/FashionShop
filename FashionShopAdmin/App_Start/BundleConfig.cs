@@ -8,30 +8,34 @@ namespace FashionShopAdmin
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("color-admin-styles")
+            bundles.Add(new StyleBundle("~/content/style")
                 .Include("~/Content/admin/assets/plugins/jquery-ui/jquery-ui.min.css")
                 .Include("~/Content/admin/assets/plugins/bootstrap/4.1.0/css/bootstrap.min.css")
-                .Include("~/Content/admin/assets/plugins/font-awesome/css/fontawesome.min.css")
+                .Include("~/Content/admin/assets/plugins/font-awesome/css/all.css")
+                .Include("~/Content/admin/assets/plugins/font-awesome/css/all.css")
                 .Include("~/Content/admin/assets/plugins/animate/animate.min.css")
                 .Include("~/Content/admin/assets/css/default/style.min.css")
                 .Include("~/Content/admin/assets/css/default/style-responsive.min.css")
-
                 .Include("~/Content/admin/assets/css/default/invoice-print.min.css")
                 .Include("~/Content/admin/assets/css/default/theme/default.css")
+                .Include("~/Content/admin/assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css")
                 );
 
-            bundles.Add(new StyleBundle("color-admin-scripts")
+            bundles.Add(new StyleBundle("~/content/script")
                 .Include("~/Content/admin/assets/plugins/jquery/jquery-3.2.1.min.js")
                 .Include("~/Content/admin/assets/plugins/jquery-ui/jquery-ui.min.js")
                 .Include("~/Content/admin/assets/plugins/bootstrap/4.1.0/js/bootstrap.bundle.min.js")
                 .Include("~/Content/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js")
+                .Include("~/Content/admin/assets/plugins/bootstrap-sweetalert/sweetalert.min.js")
                 .Include("~/Content/admin/assets/plugins/js-cookie/js.cookie.js")
-                .Include("~/Content/admin/assets/plugins/font-awesome/js/fontawesome.min.js")
+                .Include("~/Content/admin/assets/plugins/font-awesome/js/all.js")
                 .Include("~/Content/admin/assets/js/theme/default.min.js")
                 .Include("~/Content/admin/assets/js/apps.min.js")
                 .Include("~/Content/admin/assets/plugins/fullcalendar/lib/moment.min.js")
                 .Include("~/Content/admin/assets/plugins/fullcalendar/fullcalendar.min.js")
                 .Include("~/Content/admin/assets/js/demo/calendar.demo.min.js")
+                .Include("~/Content/admin/assets/plugins/DataTables/media/js/jquery.dataTables.js")
+                .Include("~/Content/admin/assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js")
                 //.Include("~/Content/admin")
                 );
 

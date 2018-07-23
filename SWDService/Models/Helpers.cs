@@ -29,7 +29,7 @@ namespace HmsService.Models
         public const string MES_SUCCESS = "Return success";
         public const string ROLE_ADMIN = "Administrator";
         public const string ROLE_MANAGER = "StoreManager";
-        
+
         public const string MES_PROMOTION_FAIL = "Don't have promotion";
         public const string MES_PROMOTION_SUCCESS = "Success";
         public const string MES_STORE_FAIL = "Don't have store";
@@ -40,16 +40,9 @@ namespace HmsService.Models
         public const string PRIVATE_KEY = "SWDSecretKey";
         public const int MAX_RECORD = 25;
         public const string DELIVERY = "DELIVERY";
-        public const string INVOICEID_PREFIX = "FB";
         public const string PRODUCT_IMAGE_SERVER_BASEURL = "http://103.79.142.115:3333";
         public const string PRODUCT_IMAGE_SERVER_PATH = "C:\\PublicIIS\\Imageserver";
-        public const string MES_CREATE_ORDER_FAIL = "Tạo đơn hàng không thành công";
-        public const string MES_CREATE_ORDER_SUCCESS = "Tạo đơn hàng thành công";
-        public const string MES_CHECK_CUSTOMER_FAIL = "Không tìm thấy khách hàng";
-        public const string MES_CHECK_EMPLOYEE_FAIL = "Không tìm thấy nhân viên";
-        public const string MES_CHECK_ORDER_DETAIL_FAIL = "Không có chi tiết hóa đơn ";
-        public const string MES_CHECK_PRODUCT_FAIL = "Không tìm thấy sản phẩm";
-        public const string MES_CHECK_QUANTITY_FAIL = "Số lượng chi tiết đơn hàng không phù hợp";
+        //public const string PRODUCT_IMAGE_SERVER_PATH = "D:\\";
         public const string IMAGE_FORMAT_EXTENSION = ".Png";
     }
 }

@@ -19,6 +19,7 @@ namespace HmsService.Models.Entities
         public int Type { get; set; }
         public decimal Amount { get; set; }
         public int Status { get; set; }
+        public int ToOrderID { get; set; }
     
         public virtual Order Order { get; set; }
     }

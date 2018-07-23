@@ -20,6 +20,7 @@ namespace HmsService.ViewModels
     			public virtual int Type { get; set; }
     			public virtual decimal Amount { get; set; }
     			public virtual int Status { get; set; }
+    			public virtual int ToOrderID { get; set; }
     	
     	public PaymentViewModel() : base() { }
     	public PaymentViewModel(HmsService.Models.Entities.Payment entity) : base(entity) { }
