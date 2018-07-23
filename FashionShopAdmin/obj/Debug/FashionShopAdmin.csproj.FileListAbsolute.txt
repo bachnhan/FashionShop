@@ -89,7 +89,6 @@ C:\Users\Administrator\Documents\FashionShop\FashionShopAdmin\bin\System.Web.Web
 C:\Users\Administrator\Documents\FashionShop\FashionShopAdmin\bin\WebGrease.dll
 C:\Users\Administrator\Documents\FashionShop\FashionShopAdmin\bin\AutoMapper.dll
 C:\Users\Administrator\Documents\FashionShop\FashionShopAdmin\bin\Autofac.dll
-C:\Users\Administrator\Documents\FashionShop\FashionShopAdmin\bin\SkyWeb.DatVM.Mvc.dll
 C:\Users\Administrator\Documents\FashionShop\FashionShopAdmin\bin\SkyWeb.DatVM.Data.dll
 C:\Users\Administrator\Documents\FashionShop\FashionShopAdmin\bin\Autofac.Integration.Mvc.dll
 C:\Users\Administrator\Documents\FashionShop\FashionShopAdmin\bin\SWDService.pdb

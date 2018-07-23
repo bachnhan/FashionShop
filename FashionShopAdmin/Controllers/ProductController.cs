@@ -154,7 +154,7 @@ namespace Admin.Controllers
             product.Price = price;
             product.ProductImages = listProductImage;
             productApi.EditProduct(product);
-            return Json(new { success = true, message = "Successfully added!" }, JsonRequestBehavior.AllowGet);
+            return Json(new { success = true, message = "Successfully edited!" }, JsonRequestBehavior.AllowGet);
         }
 
         private string SaveImageToServer(byte[] avatarImage)
@@ -170,6 +170,20 @@ namespace Admin.Controllers
             string filePath = imageServerPath + "\\" + fileName;
             image.Save(filePath, ImageFormat.Png);
             return ConstantManager.PRODUCT_IMAGE_SERVER_BASEURL + "/" + fileName;
+        }
+
+        public ActionResult DeleteProduct(int ID)
+        {
+            ProductApi productApi = new ProductApi();
+            productApi.Deactivate(ID);
+            return Json(new { success = true, message = "Successfully deleted!"});
+        }
+
+        public JsonResult GetProductDetails(int ID)
+        {
+            ProductApi productApi = new ProductApi();
+            ProductViewModel product = productApi.Get(ID);
+            return Json( product , JsonRequestBehavior.AllowGet);
         }
     }
 }

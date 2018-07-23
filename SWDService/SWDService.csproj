@@ -230,9 +230,6 @@
     <Compile Include="Models\Entities\Repositories\SupplierRepositoryGen.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\Repositories\sysdiagramRepositoryGen.cs">
-      <DependentUpon>Repositories.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\Repositories\TransportOrderDetailRepositoryGen.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
@@ -261,9 +258,6 @@
       <DependentUpon>Services.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Services\SupplierServiceGen.cs">
-      <DependentUpon>Services.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\Services\sysdiagramServiceGen.cs">
       <DependentUpon>Services.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Services\TransportOrderDetailServiceGen.cs">
@@ -411,12 +405,6 @@
     <Compile Include="Models\Entities\StoreRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\sysdiagram.cs">
-      <DependentUpon>SWDEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\sysdiagramRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\TransportOrder.cs">
       <DependentUpon>SWDEntities.tt</DependentUpon>
     </Compile>
@@ -495,9 +483,6 @@
     <Compile Include="Sdk\SupplierApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
-    <Compile Include="Sdk\sysdiagramApiGen.cs">
-      <DependentUpon>Sdk.tt</DependentUpon>
-    </Compile>
     <Compile Include="Sdk\TransportOrderApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
@@ -562,9 +547,6 @@
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\SupplierViewModelGen.cs">
-      <DependentUpon>ViewModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\sysdiagramViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\TransportOrderDetailViewModelGen.cs">

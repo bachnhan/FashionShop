@@ -3,7 +3,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@*<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />*@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -30,7 +29,6 @@
             <table id="productTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        @*<th>ID</th>*@
                         <th>Name</th>
                         <th>Size</th>
                         <th>Color</th>
@@ -39,8 +37,6 @@
                         <th>Supplier</th>
                         <th>Price</th>
                         <th>Update</th>
-                        @*<th>Parent Product</th>
-                            <th>Active</th>*@
                     </tr>
                 </thead>
             </table>
@@ -94,7 +90,7 @@
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                         <label class="btn btn-warning">
-                                            <input type="checkbox" id="orange" name="color" value="Orange" autocomplete="off">
+                                            <input type="checkbox" id="yellow" name="color" value="Yellow" autocomplete="off">
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                         <label class="btn btn-danger">
@@ -151,43 +147,43 @@
                                 <div class="form-group">
                                     <label>Size</label><br />
                                     <div class="checkbox-inline">
-                                        <input type="checkbox" id="X" name="size2" value="X" />
+                                        <input type="checkbox" id="editX" name="size2" value="X" />
                                         <label>X</label>
                                     </div>
                                     <div class="checkbox-inline">
-                                        <input type="checkbox" id="M" name="size2" value="M" />
+                                        <input type="checkbox" id="editM" name="size2" value="M" />
                                         <label>M</label>
                                     </div>
                                     <div class="checkbox-inline">
-                                        <input type="checkbox" id="L" name="size2" value="L" />
+                                        <input type="checkbox" id="editL" name="size2" value="L" />
                                         <label>L</label>
                                     </div>
                                     <div class="checkbox-inline">
-                                        <input type="checkbox" id="XL" name="size2" value="XL" />
+                                        <input type="checkbox" id="editXL" name="size2" value="XL" />
                                         <label>XL</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Color</label><br />
                                     <div class="btn-group" data-toggle="buttons">
-                                        <label class="btn btn-success">
-                                            <input type="checkbox" id="green" name="color2" value="Green" autocomplete="off">
+                                        <label id="btnGreen" class="btn btn-success">
+                                            <input type="checkbox" id="editGreen" name="color2" value="Green" autocomplete="off">
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
-                                        <label class="btn btn-primary">
-                                            <input type="checkbox" id="blue" name="color2" value="Blue" autocomplete="off">
+                                        <label id="btnBlue" class="btn btn-primary">
+                                            <input type="checkbox" id="editBlue" name="color2" value="Blue" autocomplete="off">
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
-                                        <label class="btn btn-default">
-                                            <input type="checkbox" id="white" name="color2" value="White" autocomplete="off">
+                                        <label id="btnWhite" class="btn btn-default">
+                                            <input type="checkbox" id="editWhite" name="color2" value="White" autocomplete="off">
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
-                                        <label class="btn btn-warning">
-                                            <input type="checkbox" id="orange" name="color2" value="Orange" autocomplete="off">
+                                        <label id="btnYellow" class="btn btn-warning">
+                                            <input type="checkbox" id="editYellow" name="color2" value="Yellow" autocomplete="off">
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
-                                        <label class="btn btn-danger">
-                                            <input type="checkbox" id="red" name="color2" value="Red" autocomplete="off">
+                                        <label id="btnRed" class="btn btn-danger">
+                                            <input type="checkbox" id="editRed" name="color2" value="Red" autocomplete="off">
                                             <span class="glyphicon glyphicon-ok"></span>
                                         </label>
                                     </div>
@@ -260,22 +256,84 @@
                 });
         }
 
-        function setProduct(ID) {
+        function GetProductDetails(ID) {
             $("#productId").val(ID);
-            getAllCategories2();
-            getAllSuppliers2();
+
+            //uncheck all size before edit
+            $("#editX").prop("checked", false);     
+            $("#editM").prop("checked", false);
+            $("#editL").prop("checked", false);
+            $("#editXL").prop("checked", false);
+
+            //uncheck all color before edit
+            if ($("#editGreen").prop('checked')) {
+                $("#editGreen").prop('checked', false);
+                $("#btnGreen").trigger('click');
+            }
+            if ($("#editBlue").prop('checked')) {
+                $("#editBlue").prop('checked', false);
+                $("#btnBlue").trigger('click');
+            }
+            if ($("#editWhite").prop('checked')) {
+                $("#editWhite").prop('checked', false);
+                $("#btnWhite").trigger('click');
+            }
+            if ($("#editYellow").prop('checked')) {
+                $("#editYellow").prop('checked', false);
+                $("#btnYellow").trigger('click');
+            }
+            if ($("#editRed").prop('checked')) {
+                $("#editRed").prop('checked', false);
+                $("#btnRed").trigger('click');
+            }
+
+            $.ajax({
+                method: "get",
+                dataType: "json",
+                data: {
+                    "ID" : ID
+                },
+                url: "@Url.Action("GetProductDetails", "Product")",
+                success: function (result) {
+                    $("#productName2").val(result.Name);
+                    var sizeList = result.Size.split(",");
+                    for (var i in sizeList) {
+                        $("#edit" + sizeList[i]).prop("checked", true)
+                    }
+                    var colorList = result.Color.split(",");
+                    for (var i in colorList) {
+                        $("#edit" + colorList[i]).trigger('click');
+                        $("#edit" + colorList[i]).prop('checked', true);
+                    }
+                    $("#description2").val(result.Description);
+                    $("#supplier2").val(result.SupplierId);
+                    $("#price2").val(result.Price);
+                }
+            });
         }
         $(document).ready(function () {
             var table;
             InitDataTable();
             getAllCategories();
             getAllSuppliers();
+            getAllCategories2();
+            getAllSuppliers2();
+
             $("#btnAddProduct").click(function () {
                 addNewProduct();
             });
             $("#btnEditProduct").click(function () {
                 EditProduct();
             });
+            $("#btnDelete").click(function () {
+
+            });
+
+            function DeleteProduct() {
+                $.ajax({
+
+                });
+            }
             function InitDataTable() {
                 table = $("#productTable").DataTable({
                     "ajax": {
@@ -283,7 +341,6 @@
                         "url": "@Url.Action("GetAllProducts", "Product")"
                     },
                     columns: [
-                        //{ data: 'ID' },
                         { data: "Name" },
                         { data: "Size" },
                         { data: "Color" },
@@ -294,11 +351,9 @@
                         {
                             data: 'ID',
                             render: function (data, type, row) {
-                                return '<button class="btn btn-success" data-target="#editProductModal" data-toggle="modal" style="margin-bottom:10px" onclick="setProduct(' + data + ')">Edit</button >';
+                                return '<button class="btn btn-success btn-sm" data-target="#editProductModal" data-toggle="modal" style="margin-right:5px" onclick="GetProductDetails(' + data + ')"><i class="fa fa-edit"></i>Edit</button><button id="btnDelete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Delete</button>';
                             }
                         }
-                        //{ data: "ParentProductId" },
-                        //{ data: "Active" }
                     ],
                 });
 
@@ -364,22 +419,15 @@
                             swal({
                                 type: 'success',
                                 title: 'success!',
-                                //text: 'Something went wrong!',
                             });
                             $("#addProductModal").modal('hide');
-                            //refreshTable("productTable");
                             table.ajax.reload(null, false);
-                            //$('#productTable').DataTable().ajax.reload();
-                            //table.clear();
-                            //refreshTable();
-                            //table.ajax.reload();
                         }
                     },
                     error: function (data) {
                         swal({
                             type: 'error',
                             title: 'error!',
-                            //text: 'Something went wrong!',
                         });
                     }
                 });
@@ -418,22 +466,15 @@
                             swal({
                                 type: 'success',
                                 title: 'success!',
-                                //text: 'Something went wrong!',
                             });
                             $("#editProductModal").modal('hide');
-                            //refreshTable("productTable");
                             table.ajax.reload(null, false);
-                            //$('#productTable').DataTable().ajax.reload();
-                            //table.clear();
-                            //refreshTable();
-                            //table.ajax.reload();
                         }
                     },
                     error: function (data) {
                         swal({
                             type: 'error',
                             title: 'error!',
-                            //text: 'Something went wrong!',
                         });
                     }
                 });

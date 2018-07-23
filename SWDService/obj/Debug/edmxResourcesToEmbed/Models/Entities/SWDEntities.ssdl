@@ -170,7 +170,6 @@
     <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="ParentProductId" Type="int" />
     <Property Name="Active" Type="bit" Nullable="false" />
-    <Property Name="PicUrl" Type="varchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="ProductCategory">
     <Key>
@@ -210,16 +209,6 @@
     <Property Name="Phone" Type="varchar" MaxLength="210" />
     <Property Name="Fax" Type="varchar" MaxLength="50" />
     <Property Name="Active" Type="bit" Nullable="false" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="TransportOrder">
     <Key>
@@ -559,7 +548,6 @@
     <EntitySet Name="ProductImage" EntityType="Self.ProductImage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransportOrder" EntityType="Self.TransportOrder" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransportOrderDetail" EntityType="Self.TransportOrderDetail" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Account_Customer" Association="Self.FK_Account_Customer">
