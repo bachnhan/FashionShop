@@ -1,1 +1,13 @@
 .vs/
+FashionShopAdmin/bin/roslyn/VBCSCompiler.exe
+FashionShopAdmin/bin/roslyn/System.ValueTuple.dll
+FashionShopAdmin/bin/roslyn/System.Security.Cryptography.Primitives.dll
+FashionShopAdmin/bin/roslyn/System.Reflection.Metadata.dll
+FashionShopAdmin/bin/roslyn/System.IO.FileSystem.dll
+FashionShopAdmin/bin/roslyn/System.IO.FileSystem.Primitives.dll
+FashionShopAdmin/bin/roslyn/System.IO.Compression.dll
+FashionShopAdmin/bin/roslyn/System.Collections.Immutable.dll
+FashionShopAdmin/bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll
+FashionShopAdmin/bin/roslyn/Microsoft.CodeAnalysis.dll
+FashionShopAdmin/bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll
+FashionShopAdmin/bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll
