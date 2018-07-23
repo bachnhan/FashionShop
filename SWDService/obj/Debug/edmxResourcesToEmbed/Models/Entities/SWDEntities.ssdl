@@ -21,6 +21,7 @@
     <Property Name="Gender" Type="bit" />
     <Property Name="Birthday" Type="datetime" />
     <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Avatar" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -78,7 +79,7 @@
     <Property Name="EmployeeID" Type="int" />
     <Property Name="CustomerID" Type="int" Nullable="false" />
     <Property Name="CheckInDate" Type="datetime" Nullable="false" />
-    <Property Name="StoreID" Type="int" Nullable="false" />
+    <Property Name="StoreID" Type="int" />
     <Property Name="Status" Type="int" Nullable="false" />
     <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="DeliveryAddress" Type="nvarchar" MaxLength="250" />
@@ -100,7 +101,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="Size" Type="varchar" MaxLength="250" />
     <Property Name="Color" Type="nvarchar" MaxLength="250" />
     <Property Name="Description" Type="nvarchar" MaxLength="250" />
@@ -292,7 +293,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orders_Store">
-    <End Role="Store" Type="Self.Store" Multiplicity="1" />
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Store">

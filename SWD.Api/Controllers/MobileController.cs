@@ -29,7 +29,7 @@ namespace SWD.Api.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public JsonResult LoginByFacebook(string fbAccessToken)
+        public JsonResult LoginByFacebook(string fbAccessToken/*, string avatarUrl*/)
         {
             var customerApi = new CustomerApi();
             //Get Facebook client profile by accessToken
@@ -47,7 +47,7 @@ namespace SWD.Api.Controllers
             {
                 fbGender = false;
             }
-            DateTime fbBirthday = new DateTime();
+            DateTime? fbBirthday = null;
             if (me.birthday != null)
             {
                 fbBirthday = DateTime.ParseExact(me.birthday, "MM/dd/yyyy", CultureInfo.InvariantCulture);
@@ -88,6 +88,7 @@ namespace SWD.Api.Controllers
                 newCustomer.Birthday = fbBirthday;
                 newCustomer.Gender = fbGender;
                 newCustomer.fbEmail = fbEmail;
+                //newCustomer.Avatar = avatarUrl;
                 int resId = -1;
                 resId = customerApi.AddCustomer(newCustomer);
                 if (resId != -1)

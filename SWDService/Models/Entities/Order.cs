@@ -26,7 +26,7 @@ namespace HmsService.Models.Entities
         public Nullable<int> EmployeeID { get; set; }
         public int CustomerID { get; set; }
         public System.DateTime CheckInDate { get; set; }
-        public int StoreID { get; set; }
+        public Nullable<int> StoreID { get; set; }
         public int Status { get; set; }
         public decimal TotalAmount { get; set; }
         public string DeliveryAddress { get; set; }

@@ -20,7 +20,7 @@ namespace HmsService.ViewModels
     			public virtual Nullable<int> EmployeeID { get; set; }
     			public virtual int CustomerID { get; set; }
     			public virtual System.DateTime CheckInDate { get; set; }
-    			public virtual int StoreID { get; set; }
+    			public virtual Nullable<int> StoreID { get; set; }
     			public virtual int Status { get; set; }
     			public virtual decimal TotalAmount { get; set; }
     			public virtual string DeliveryAddress { get; set; }
