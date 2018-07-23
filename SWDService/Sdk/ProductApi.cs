@@ -13,11 +13,6 @@ namespace HmsService.Sdk
         public void CreateProduct(ProductViewModel product)
         {
             var entity = product.ToEntity();
-            entity.ProductImages.Clear();
-            foreach (var item in product.ProductImages)
-            {
-                entity.ProductImages.Add(item.ToEntity());
-            }
             this.BaseService.Create(entity);
             this.BaseService.Save();
         }

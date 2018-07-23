@@ -51,7 +51,6 @@ namespace Admin.Controllers
             }
 
             List<ProductImageViewModel> listProductImage = new List<ProductImageViewModel>();
-            ProductImageViewModel productImage = new ProductImageViewModel();
             var orderCount = 0;
             byte[] avatarImage = null;
             if (Request.Files.Count > 0)
@@ -69,6 +68,7 @@ namespace Admin.Controllers
                     if (avatarImage != null)
                     {
                         picUrl = SaveImageToServer(avatarImage);
+                        ProductImageViewModel productImage = new ProductImageViewModel();
                         productImage.PicUrl = picUrl;
                         productImage.DisplayOrder = ++orderCount;
                         listProductImage.Add(productImage);
@@ -116,7 +116,6 @@ namespace Admin.Controllers
             }
 
             List<ProductImageViewModel> listProductImage = new List<ProductImageViewModel>();
-            ProductImageViewModel productImage = new ProductImageViewModel();
             var orderCount = 0;
             byte[] avatarImage = null;
             if (Request.Files.Count > 0)
@@ -134,6 +133,7 @@ namespace Admin.Controllers
                     if (avatarImage != null)
                     {
                         picUrl = SaveImageToServer(avatarImage);
+                        ProductImageViewModel productImage = new ProductImageViewModel();
                         productImage.PicUrl = picUrl;
                         productImage.DisplayOrder = ++orderCount;
                         listProductImage.Add(productImage);
@@ -184,6 +184,15 @@ namespace Admin.Controllers
             ProductApi productApi = new ProductApi();
             ProductViewModel product = productApi.Get(ID);
             return Json( product , JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetProductImages(int ID)
+        {
+            ProductApi productApi = new ProductApi();
+            ProductViewModel product = productApi.Get(ID);
+            return Json( new {
+                ProductImages = product.ProductImages
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }
