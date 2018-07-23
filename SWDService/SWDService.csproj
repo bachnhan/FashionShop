@@ -458,6 +458,7 @@
     <Compile Include="Sdk\InventoryCheckingDetailApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sdk\OrderDetailApi.cs" />
     <Compile Include="Sdk\OrderApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
@@ -524,9 +525,11 @@
     <Compile Include="ViewModels\InventoryCheckingViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\OrderDetailViewModel.cs" />
     <Compile Include="ViewModels\OrderDetailViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
