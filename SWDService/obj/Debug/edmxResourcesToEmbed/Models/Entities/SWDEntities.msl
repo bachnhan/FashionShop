@@ -93,16 +93,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="C__MigrationHistory">
-      <EntityTypeMapping TypeName="HmsEntities.C__MigrationHistory">
-        <MappingFragment StoreEntitySet="__MigrationHistory">
-          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-          <ScalarProperty Name="Model" ColumnName="Model" />
-          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Accounts">
       <EntityTypeMapping TypeName="HmsEntities.Account">
         <MappingFragment StoreEntitySet="Account">
@@ -161,6 +151,7 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="HmsEntities.Customer">
         <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
           <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="Birthday" ColumnName="Birthday" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />

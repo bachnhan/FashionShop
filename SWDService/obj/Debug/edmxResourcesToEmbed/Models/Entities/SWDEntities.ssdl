@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="HmsEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="__MigrationHistory">
-    <Key>
-      <PropertyRef Name="MigrationId" />
-      <PropertyRef Name="ContextKey" />
-    </Key>
-    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
-    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
-    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
-  </EntityType>
   <EntityType Name="Account">
     <Key>
       <PropertyRef Name="Username" />
@@ -82,6 +72,7 @@
     <Property Name="Gender" Type="bit" />
     <Property Name="Birthday" Type="datetime" />
     <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Avatar" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -139,7 +130,7 @@
     <Property Name="EmployeeID" Type="int" />
     <Property Name="CustomerID" Type="int" Nullable="false" />
     <Property Name="CheckInDate" Type="datetime" Nullable="false" />
-    <Property Name="StoreID" Type="int" Nullable="false" />
+    <Property Name="StoreID" Type="int" />
     <Property Name="Status" Type="int" Nullable="false" />
     <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="DeliveryAddress" Type="nvarchar" MaxLength="250" />
@@ -409,7 +400,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orders_Store">
-    <End Role="Store" Type="Self.Store" Multiplicity="1" />
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Store">
@@ -529,7 +520,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="HmsEntitiesStoreContainer">
-    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />

@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/sweetalert2.min.css">
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Order</h2>
+            <table id="orderTable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Order Date</th>
+                        <th>Status</th>
+                        <th>Total Bill</th>
+                        <th>Delivery Address</th>
+                        <th>Receiver Name</th>
+                        <th>Receiver Phone</th>
+                        <th>Order Details</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="orderDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Order Details</h4>
+            </div>
+            <div class="modal-body">
+                <table id="orderDetailsTable" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Amount</th>
+                            <th>Size</th>
+                            <th>Color</th>
+                        </tr>
+                    </thead>
+                </table>               
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Scripts/sweetalert2.all.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.10.19/dataRender/datetime.js"></script>
+
+    <script>
+        var orderDetailsDataTable;
+        function GetDetails(ID) {
+            orderDetailsDataTable != null ? orderDetailsDataTable.destroy() : "";
+            //orderDetailsDataTable != null ? orderDetailsDataTable.clear() : "";
+            //$("#orderDetailsTable tr").remove();;
+            orderDetailsDataTable = $("#orderDetailsTable").DataTable({
+                ajax: {
+                    url: '@Url.Action("GetOrderDetails", "OrderDetails")',
+                    type: 'get',
+                    data: {
+                        "orderID": ID
+                    }
+                },
+                columns: [
+                    { data: "Product.Name"},
+                    { data: "Quantity"},
+                    { data: "Amount"},
+                    { data: "Price" },
+                    { data: "Size" },
+                    { data: "Color"},
+                ],
+            });
+
+
+
+            //$("#orderId").val(ID);
+            @*$.ajax({
+                method: "get",
+                dataType: "json",
+                data: {
+                    "orderID": ID
+                },
+                url: "@Url.Action("GetOrderDetails", "OrderDetails")",
+                success: function (result) {
+                    $("#orderDetailsTable").DataTable({                        
+                        columns: [
+                            { data: result.Product.Name },
+                            { data: result.Quantity },
+                            { data: result.Amount },
+                            { data: result.Price },
+                            { data: result.Size },
+                            { data: result.Color },
+                        ],
+                    });
+                    //$("#name").val(result.Name);
+                    //$("#quantity").val(result.Description);
+                    //$("#totalAmount").val(result.SupplierId);
+                    //$("#size").val(result.Price);
+                    //$("#color").val(result.Price);
+                }
+            });*@
+        }
+        $(document).ready(function () {
+            InitDataTable();
+            function InitDataTable() {
+                $("#orderTable").DataTable({
+                    "ajax": {
+                        "type": "GET",
+                        "url": "@Url.Action("GetAllOrders", "Order")"
+                    },
+                    columns: [
+                        { data: "Customer.Name" },
+                        {
+                            data: "CheckInDate"
+                        },
+                        { data: "Status" },
+                        { data: "TotalAmount" },
+                        { data: "DeliveryAddress" },
+                        { data: "ReceiverName" },
+                        { data: "ReceiverPhone" },
+                        {
+                            data: 'ID',
+                            render: function (data, type, row) {
+                                return '<button class="btn btn-success btn-sm" data-target="#orderDetailsModal" data-toggle="modal" onclick="GetDetails(' + data + ')"><i class="fa fa-eye"></i></button>';
+                            },
+                            orderable: false
+                        }
+                    ],
+                });
+
+            }
+            @*function GetDetails(ID) {
+                $("#orderId").val(ID);
+                $.ajax({
+                    method: "get",
+                    dataType: "json",
+                    data: {
+                        "ID" : ID
+                    },
+                    url: "@Url.Action("GetOrderDetails", "OrderDetails")",
+                    success: function (result) {
+                        $("#name").val(result.Name);                    
+                        $("#quantity").val(result.Description);
+                        $("#totalAmount").val(result.SupplierId);
+                        $("#size").val(result.Price);
+                        $("#color").val(result.Price);
+                    }
+            });
+        }*@
+        });
+
+    </script>
+}

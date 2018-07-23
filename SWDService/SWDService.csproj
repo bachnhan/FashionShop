@@ -177,12 +177,6 @@
     <Compile Include="Models\Entities\CustomerRefined.cs">
       <DependentUpon>EntityRefinery.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\C__MigrationHistory.cs">
-      <DependentUpon>SWDEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\C__MigrationHistoryRefined.cs">
-      <DependentUpon>EntityRefinery.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\Employee.cs">
       <DependentUpon>SWDEntities.tt</DependentUpon>
     </Compile>
@@ -218,9 +212,6 @@
     <Compile Include="Models\Entities\Repositories\AspNetUserRepositoryGen.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\Repositories\C__MigrationHistoryRepositoryGen.cs">
-      <DependentUpon>Repositories.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\Repositories\InventoryCheckingDetailRepositoryGen.cs">
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
@@ -246,9 +237,6 @@
       <DependentUpon>Services.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Services\AspNetUserServiceGen.cs">
-      <DependentUpon>Services.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\Services\C__MigrationHistoryServiceGen.cs">
       <DependentUpon>Services.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Services\InventoryCheckingDetailServiceGen.cs">
@@ -446,9 +434,6 @@
     <Compile Include="Sdk\CustomerApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
-    <Compile Include="Sdk\C__MigrationHistoryApiGen.cs">
-      <DependentUpon>Sdk.tt</DependentUpon>
-    </Compile>
     <Compile Include="Sdk\EmployeeApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
@@ -458,6 +443,7 @@
     <Compile Include="Sdk\InventoryCheckingDetailApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sdk\OrderDetailApi.cs" />
     <Compile Include="Sdk\OrderApiGen.cs">
       <DependentUpon>Sdk.tt</DependentUpon>
     </Compile>
@@ -512,9 +498,6 @@
     <Compile Include="ViewModels\CustomerViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\C__MigrationHistoryViewModelGen.cs">
-      <DependentUpon>ViewModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\EmployeeViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
@@ -524,9 +507,11 @@
     <Compile Include="ViewModels\InventoryCheckingViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\OrderDetailViewModel.cs" />
     <Compile Include="ViewModels\OrderDetailViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModelGen.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
