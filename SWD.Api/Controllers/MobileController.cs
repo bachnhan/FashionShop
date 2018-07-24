@@ -35,10 +35,14 @@ namespace SWD.Api.Controllers
             //Get Facebook client profile by accessToken
             var fb = new FacebookClient();
             fb.AccessToken = fbAccessToken;
-            dynamic me = fb.Get("me?fields=id,name,gender,email,birthday");
+            dynamic me = fb.Get("me?fields=id,name,gender,email,birthday,picture");
             string fbEmail = me.email;
             string fbName = me.name;
             bool? fbGender = null;
+            string fbpicUrl = "";
+            var jsonPic = me.picture;
+            //get picture
+            fbpicUrl = (string)(((JsonObject)(((JsonObject)jsonPic)["data"]))["url"]);
             if (me.gender == "male")
             {
                 fbGender = true;
@@ -88,7 +92,7 @@ namespace SWD.Api.Controllers
                 newCustomer.Birthday = fbBirthday;
                 newCustomer.Gender = fbGender;
                 newCustomer.fbEmail = fbEmail;
-                newCustomer.Avatar = avatarUrl;
+                newCustomer.Avatar = fbpicUrl;
                 int resId = -1;
                 resId = customerApi.AddCustomer(newCustomer);
                 if (resId != -1)
