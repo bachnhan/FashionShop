@@ -399,7 +399,7 @@ namespace SWD.Api.Controllers
             order.TotalAmount = totalAmount;
             order.Payments = listPayment;
             order.InvoiceID = generateInvoiceID();
-            order.Status = (int)OrderStatusEnum.Finish;
+            order.Status = (int)OrderStatusEnum.New;
             var rs = orderApi.CreateOrder(order);
             if (rs == false)
             {
