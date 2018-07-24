@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 
 namespace HmsService.Models
 {
-   
+  
 }
 

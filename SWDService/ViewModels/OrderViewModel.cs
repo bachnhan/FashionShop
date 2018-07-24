@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HmsService.Models;
 using HmsService.Models.Entities;
 using System;
 using System.Collections.Generic;

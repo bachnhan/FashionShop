@@ -176,3 +176,4 @@ C:\Users\Administrator\Documents\FashionShop\SWD.Api\obj\Debug\SWD.Api.csproj.Co
 C:\Users\Administrator\Documents\FashionShop\SWD.Api\obj\Debug\SWD.Api.csproj.CopyComplete
 C:\Users\Administrator\Documents\FashionShop\SWD.Api\obj\Debug\SWD.Api.dll
 C:\Users\Administrator\Documents\FashionShop\SWD.Api\obj\Debug\SWD.Api.pdb
+C:\Users\Nhan\Documents\FashionShop\SWD.Api\bin\Autofac.Integration.Mvc.dll
