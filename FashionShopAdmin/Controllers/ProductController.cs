@@ -173,11 +173,11 @@ namespace Admin.Controllers
             return ConstantManager.PRODUCT_IMAGE_SERVER_BASEURL + "/" + fileName;
         }
 
-        public ActionResult DeleteProduct(int ID)
+        public ActionResult DeactivateProduct(int ID)
         {
             ProductApi productApi = new ProductApi();
             productApi.Deactivate(ID);
-            return Json(new { success = true, message = "Successfully deleted!"});
+            return Json(new { success = true, message = "Successfully deactivate!"});
         }
 
         public JsonResult GetProductDetails(int ID)

@@ -24,7 +24,7 @@
 </style>
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-11">
             <h2>Product</h2>
             <button class="btn btn-success" data-target="#addProductModal" data-toggle="modal" style="margin-bottom:10px">
                 <i class="fa fa-plus"></i>
@@ -37,7 +37,7 @@
                         <th>Name</th>
                         <th>Size</th>
                         <th>Color</th>
-                        <th>Description</th>
+                        @*<th>Description</th>*@
                         <th>Category</th>
                         <th>Supplier</th>
                         <th>Price</th>
@@ -249,6 +249,32 @@
     <script src="~/Scripts/sweetalert2.all.min.js"></script>
 
     <script>
+        var table;
+        function DeactivateProduct(ID) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "ID": ID
+                    },
+                    url: "@Url.Action("DeactivateProduct", "Product")",
+                    success: function (result) {
+                        if (result.success) {
+                            swal({
+                                type: 'success',
+                                title: result.message
+                            });
+                            table.ajax.reload(null, false);
+                        }
+                    },
+                    error: function (data) {
+                        swal({
+                            type: 'error',
+                            title: 'error!',
+                        });
+                    }
+                });
+            }
         function getAllCategories2() {
                 $.ajax({
                     url: "@Url.Action("GetAllCategories", "Category")",
@@ -350,7 +376,7 @@
             });
         }
         $(document).ready(function () {
-            var table;
+            //var table;
             InitDataTable();
             getAllCategories();
             getAllSuppliers();
@@ -362,16 +388,9 @@
             });
             $("#btnEditProduct").click(function () {
                 EditProduct();
-            });
-            $("#btnDelete").click(function () {
+            });            
 
-            });
-
-            function DeleteProduct() {
-                $.ajax({
-
-                });
-            }
+            
             function InitDataTable() {
                 table = $("#productTable").DataTable({
                     "ajax": {
@@ -382,7 +401,7 @@
                         { data: "Name" },
                         { data: "Size" },
                         { data: "Color" },
-                        { data: "Description" },
+                        //{ data: "Description" },
                         { data: "ProductCategory.Name" },
                         { data: "Supplier.Name" },
                         { data: "Price" },
@@ -395,7 +414,7 @@
                         {
                             data: 'ID',
                             render: function (data, type, row) {
-                                return '<button class="btn btn-success btn-sm" data-target="#editProductModal" data-toggle="modal" style="margin-right:5px" onclick="GetProductDetails(' + data + ')"><i class="fa fa-edit"></i>Edit</button><button id="btnDelete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Delete</button>';
+                                return '<button class="btn btn-success btn-sm" data-target="#editProductModal" data-toggle="modal" style="margin-right:5px" onclick="GetProductDetails(' + data + ')"><i class="fa fa-edit"></i>Edit</button><button id="btnDeactivate" class="btn btn-danger btn-sm" onclick=DeactivateProduct(' + data + ')><i class="fa fa-trash"></i>Deactivate</button>';
                             }
                         }
                     ],
@@ -466,6 +485,7 @@
                             });
                             $("#addProductModal").modal('hide');
                             table.ajax.reload(null, false);
+                            ClearAddNewForm();
                         }
                     },
                     error: function (data) {
@@ -509,7 +529,7 @@
                         if (data.success) {
                             swal({
                                 type: 'success',
-                                title: 'success!',
+                                title: data.message,
                             });
                             $("#editProductModal").modal('hide');
                             table.ajax.reload(null, false);
@@ -528,5 +548,34 @@
                 $(`#${id}`).fnReloadAjax();
             }
         });
+
+        function ClearAddNewForm() {
+            $("#productName").val('');
+            $("input[name='size']").prop("checked", false);
+            $("#description").val('');
+            $("#price").val('');
+            //uncheck all color before edit
+            if ($("#green").prop('checked')) {
+                $("#green").prop('checked', false);
+                $("#green").trigger('click');
+            }
+            if ($("#blue").prop('checked')) {
+                $("#blue").prop('checked', false);
+                $("#blue").trigger('click');
+            }
+            if ($("#white").prop('checked')) {
+                $("#white").prop('checked', false);
+                $("#white").trigger('click');
+            }
+            if ($("#yellow").prop('checked')) {
+                $("#yellow").prop('checked', false);
+                $("#yellow").trigger('click');
+            }
+            if ($("#red").prop('checked')) {
+                $("#red").prop('checked', false);
+                $("#red").trigger('click');
+            }
+        }
+
     </script>
 }
