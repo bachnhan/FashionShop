@@ -110,8 +110,8 @@
                 columns: [
                     { data: "Product.Name"},
                     { data: "Quantity"},
-                    { data: "Amount"},
                     { data: "Price" },
+                    { data: "Amount" },
                     { data: "Size" },
                     { data: "Color"},
                 ],
@@ -200,7 +200,7 @@
                 formData.append('ID', $("#EditOrderId").val());
                 formData.append('Status', $("#dropdownMenuButton").val());
                 $.ajax({
-                    url: "@Url.Action("UpdateStaus", "Order")",
+                    url: "@Url.Action("UpdateStatus", "Order")",
                     method: "post",
                     data: formData,
                     processData: false,

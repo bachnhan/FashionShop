@@ -25,7 +25,7 @@ namespace FashionShopAdmin.Controllers
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult UpdateStaus(int Status, int ID)
+        public JsonResult UpdateStatus(int Status, int ID)
         {
             OrderApi orderApi = new OrderApi();
             var order = orderApi.Get().Where(q => q.ID == ID).FirstOrDefault();
