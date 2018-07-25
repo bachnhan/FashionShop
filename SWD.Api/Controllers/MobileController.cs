@@ -233,7 +233,7 @@ namespace SWD.Api.Controllers
             ProductImageApi productImageApi = new ProductImageApi();
 
             //get parent product
-            var products = productApi.Get().Where(q => q.ParentProductId == null);
+            var products = productApi.Get().Where(q => q.ParentProductId == null && q.Active == true);
 
             if (products == null)
             {
